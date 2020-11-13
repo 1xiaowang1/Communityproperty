@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>FOREST物业管理系统后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- DataTables -->
+    <link href="libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+    <link href="libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
+    <!-- App css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/app.min.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body class="enlarged boxed-layout" data-keep-enlarged="true">
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+    <div class="navbar-custom">
+        <ul class="list-unstyled topnav-menu float-right mb-0">
+
+            <li class="dropdown d-none d-lg-block">
+                <a class="nav-link dropdown-toggle mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
+                   role="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="images/flags/us.jpg" alt="user-image" class="mr-1" height="12"> <span
+                        class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="images/flags/spain.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">Spanish</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="images/flags/germany.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">German</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="images/flags/italy.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">Italian</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="images/flags/russia.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">Russian</span>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
+                   role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="dripicons-inbox mail-icon"></i>
+                    <span class="badge badge-info noti-icon-badge">20</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                    <!-- item-->
+                    <div class="dropdown-item noti-title">
+                        <h5 class="m-0">
+                                    <span class="float-right">
+                                        <a href="" class="text-dark">
+                                            <small>Clear All</small>
+                                        </a>
+                                    </span>20 New Messages
+                        </h5>
+                    </div>
+
+                    <div class="slimscroll noti-scroll">
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                            <div class="notify-icon"><img src="images/users/avatar-1.jpg"
+                                                          class="img-fluid rounded-circle" alt=""/></div>
+                            <p class="notify-details">Sandra Smith
+                                <small class="text-muted">Hey ! I'm working on your project</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon"><img src="images/users/avatar-2.jpg"
+                                                          class="img-fluid rounded-circle" alt=""/></div>
+                            <p class="notify-details">Amily Lee
+                                <small class="text-muted">Hi, How are you? What about our next meeting?</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon">
+                                <img src="images/users/avatar-3.jpg" class="img-fluid rounded-circle" alt=""/></div>
+                            <p class="notify-details">David Boos</p>
+                            <p class="text-muted mb-0 user-msg">
+                                <small>What about our next meeting</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon"><img src="images/users/avatar-4.jpg"
+                                                          class="img-fluid rounded-circle" alt=""/></div>
+                            <p class="notify-details">Christopher Palmer
+                                <small class="text-muted">Waiting for your Response...</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon">
+                                <img src="images/users/avatar-5.jpg" class="img-fluid rounded-circle" alt=""/></div>
+                            <p class="notify-details">Malika Roy</p>
+                            <p class="text-muted mb-0 user-msg">
+                                <small>Wow that's great</small>
+                            </p>
+                        </a>
+                    </div>
+
+                    <!-- All-->
+                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                        View all
+                        <i class="fi-arrow-right"></i>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
+                   role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="dripicons-bell noti-icon"></i>
+                    <span class="badge badge-danger noti-icon-badge">35</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                    <!-- item-->
+                    <div class="dropdown-item noti-title">
+                        <h5 class="m-0">
+                                    <span class="float-right">
+                                        <a href="" class="text-dark">
+                                            <small>Clear All</small>
+                                        </a>
+                                    </span>Notification
+                        </h5>
+                    </div>
+
+                    <div class="slimscroll noti-scroll">
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-info"><i class="mdi mdi-cloud-upload-outline"></i></div>
+                            <p class="notify-details">Your upload has been approved
+                                <small class="text-muted">5 hours ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                            <div class="notify-icon bg-success"><i class="mdi mdi-map-marker-check"></i></div>
+                            <p class="notify-details">You added your Location
+                                <small class="text-muted">Just Now</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-primary"><i class="mdi mdi-layers-remove"></i></div>
+                            <p class="notify-details">Your item is shipped
+                                <small class="text-muted">It is a long established fact that a reader will</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-purple"><i class="mdi mdi-check-bold"></i></div>
+                            <p class="notify-details">Your order is placed
+                                <small class="text-muted">Dummy text of the printing and typesetting industry.</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-alert-outline"></i>
+                            </div>
+                            <p class="notify-details">Your Subscription Expired
+                                <small class="text-muted">1 days ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-danger">
+                                <i class="mdi mdi-settings"></i>
+                            </div>
+                            <p class="notify-details"><b>Devid</b>, You changed your Settings
+                                <small class="text-muted">5 days ago</small>
+                            </p>
+                        </a>
+                    </div>
+
+                    <!-- All-->
+                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                        View all
+                        <i class="fi-arrow-right"></i>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
+                   href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    <span class="pro-user-name ml-1" id="name">
+                                <i class="mdi mdi-chevron-down"></i>
+                            </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                    <!-- item-->
+                    <div class="dropdown-item noti-title">
+                        <h6 class="m-0" id="name1">
+
+                        </h6>
+                    </div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="dripicons-user"></i>
+                        <span>我的信息</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="dripicons-card"></i>
+                        <span>My Wallet</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="dripicons-gear"></i>
+                        <span>设置信息</span>
+                    </a>
+
+                </div>
+            </li>
+
+        </ul>
+
+        <ul class="list-unstyled menu-left mb-0">
+            <li class="float-left">
+                <a href="index.html" class="logo">
+                            <span class="logo-lg">
+                                <img src="assets/images/logo.png" alt="" height="35"></span>
+                    <span class="logo-sm">
+                                <img src="assets/images/logo.png" alt="" height="34">
+                            </span>
+                </a>
+            </li>
+            <li class="float-left">
+                <a class="button-menu-mobile navbar-toggle">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+            </li>
+            <li class="app-search d-none d-md-block">
+                <form class="form-inline">
+                    <input type="text" class="form-control" placeholder="Search…" readonly>
+                    <button class="btn btn-primary-color" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left-side-menu">
+
+        <div class="slimscroll-menu">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+
+                <ul class="metismenu" id="side-menu">
+
+
+                    <div class="left-user">
+                        <div class="user-box">
+                            <div class="user-img">
+                                <img src="images/users/avatar-1.jpg" alt="user-img" title="Mat Helme"
+                                     class="rounded-circle img-fluid">
+                                <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
+                            </div>
+
+                            <h5><a href="javascript: void(0);">欢迎您</a></h5>
+                            <p class="text-muted mb-0">
+                                <small id="admin"></small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <li>
+                        <a href="index.html">
+                            <i class="dripicons-device-desktop"></i>
+                            <span>系统分析</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="dripicons-view-apps"></i>
+                            <span> 界面布局 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="layouts-dark-header.html">深色标题</a>
+                            </li>
+                            <li>
+                                <a href="layouts-sidebar-collapsed.html">搜索侧栏</a>
+                            </li>
+                            <li>
+                                <a href="layouts-dark-sidebar.html">深色侧栏</a>
+                            </li>
+                            <li>
+                                <a href="layouts-small-sidebar.html">小型侧栏</a>
+                            </li>
+                            <li>
+                                <a href="layouts-boxed.html">方框布局</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="tables-datatable.html">
+                            <i class="dripicons-calendar"></i> <span> 业主信息 </span><span class="menu-arrow"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="room-datatable.html">
+                            <i class="dripicons-briefcase"></i>
+                            <span> 住房信息 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="dripicons-view-list"></i>
+                            <span> 车辆信息 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="car-datatable.html">基本信息</a>
+                            </li>
+                            <li>
+                                <a href="travelrecord-datatable.html">出行记录</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="order-datatable.html">
+                            <i class="dripicons-graph-pie"></i>
+                            <span> 收费管理 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="repair-datatable.html">
+                            <i class="dripicons-document"></i>
+                            <span> 维修管理 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="customer-datatable.html">
+                            <i class="dripicons-map"></i>
+                            <span> 客服管理 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    </li>
+                    <li>
+                        ______________________________________
+                    </li>
+                    <li>
+                        <a href="xtYongUser-datatable.html">
+                            <i class="dripicons-user"></i>
+                            <span> 员工管理</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="flower-datatable.html">
+                            <i class="dripicons-star"></i>
+                            <span> 楼盘管理 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="complaint-datatable.html">
+                            <i class="dripicons-duplicate"></i>
+                            <span>投诉管理 </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- End Sidebar -->
+
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">首页</a></li>
+                                    <li class="breadcrumb-item active">系统首页</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">后台界面</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-xl-12 stretch-card">
+                        <div class="card-box card-gradient">
+                            <div class="row">
+                                <div class="col-xl-4 p-20">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="header-title">单收益</h4>
+                                            <h1 id="price"></h1>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="float-right">
+                                                <h4 class="header-title">总收益</h4>
+                                                <h1 id="sum"></h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-process">
+                                        <p> 100%</p>
+                                        <div class="progress mb-7" style="height: 3px;">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 100%;"
+                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="header-title">用户数量</h4>
+                                            <h1 id="count"></h1>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="float-right">
+                                                <h4 class="header-title">未缴费</h4>
+                                                <h1 id="orderList"></h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 p-20">
+                                    <div class="dropdown float-right">
+                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                                           aria-expanded="false"> 2020 <i class="mdi mdi-chevron-down"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">2019</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">2018</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">2017</a>
+                                        </div>
+                                    </div>
+                                    <h4 class="header-title mb-3">矩形图</h4>
+                                    <div class="chartjs-chart product-chart">
+                                        <canvas id="product-chart"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 p-20">
+                                    <div class="dropdown float-right">
+                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                                           aria-expanded="false"> 2020 <i class="mdi mdi-chevron-down"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">2019</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">2018</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">2017</a>
+                                        </div>
+                                    </div>
+                                    <h4 class="header-title mb-3">扇形图</h4>
+
+                                    <div class="dudash chartjs-chart dash-doughnut">
+                                        <canvas id="doughnut"></canvas>
+                                    </div>
+
+                                    <div class="doughnut-footer">
+                                        <i class="mdi mdi-stop-circle-outline text-pink"></i> 今年占比 60% <span
+                                            class="float-right"><i class="mdi mdi-stop-circle-outline text-info"></i> 去年占比 40%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end card-box-->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-xl-8 stretch-card">
+                        <div class="card-box">
+                            <div class="dropdown float-right">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <i class="mdi mdi-dots-horizontal"></i>
+                                </a>
+                            </div>
+                            <div class="table-responsive">
+                                <div class="table table-centered table-hover mb-0">
+                                    <h4 class="header-title mb-3">日期</h4>
+                                    <div class="calendar2">
+                                        <div id="inline-datepicker-example" class="datepicker"></div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- end card-box-->
+                        </div> <!-- end col-->
+
+                        <div class="col-xl-4 stretch-card">
+                            <div class="card-box">
+                                <h4 class="header-title mb-3">Statistics</h4>
+                                <div class="row text-center">
+                                    <div class="col-sm-4 mb-3">
+                                        <h3 class="font-weight-light">19,785</h3>
+                                        <p class="text-muted text-overflow">Add Views</p>
+                                    </div>
+                                    <div class="col-sm-4 mb-3">
+                                        <h3 class="font-weight-light">$3,787</h3>
+                                        <p class="text-muted text-overflow">Est. Earning</p>
+                                    </div>
+                                    <div class="col-sm-4 mb-3">
+                                        <h3 class="font-weight-light">$4,548</h3>
+                                        <p class="text-muted text-overflow">Total Cost</p>
+                                    </div>
+                                </div>
+                                <div class="chartjs-chart line-chart-static">
+                                    <canvas id="line-chart-static"></canvas>
+                                </div>
+                            </div> <!-- end card-box -->
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-xl-12 stretch-card">
+                        <div class="card-box">
+                            <div class="dropdown float-right">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <i class="mdi mdi-dots-horizontal"></i>
+                                </a>
+                            </div>
+                            <h4 class="header-title mb-4">最新业主</h4>
+
+                            <div class="table-responsive">
+                                <table class="table table-centered table-hover mb-0" id="datatable">
+                                    <thead>
+                                    <tr>
+                                    <tr>
+                                        <th>业主编号</th>
+                                        <th>业主姓名</th>
+                                        <th>业主性别</th>
+                                        <th>业主电话</th>
+                                        <th>身份证号</th>
+                                        <th>电子邮件</th>
+                                        <th>登记时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="sbody">
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div> <!-- end card-box-->
+                    </div> <!-- end col-->
+                </div> <!-- end row -->
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        2019 © Dashboard Theme By <a href="#">Dashoon</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+</div>
+<!-- END wrapper -->
+
+<!-- Vendor js -->
+<script src="js/vendor.min.js"></script>
+
+<!-- KNOB JS -->
+<script src="libs/jquery-knob/jquery.knob.min.js"></script>
+<!-- Chart JS -->
+<script src="libs/chart-js/Chart.bundle.min.js"></script>
+<!-- DatePicker JS -->
+<script src="libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+<!-- Datatable js -->
+<script src="libs/datatables/jquery.dataTables.min.js"></script>
+<script src="libs/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="libs/datatables/dataTables.responsive.min.js"></script>
+<script src="libs/datatables/responsive.bootstrap4.min.js"></script>
+
+<!-- Dashboard Init JS -->
+<script src="js/pages/dashboard.init.js"></script>
+
+<!-- App js -->
+<script src="js/app.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
+</body>
+<script type="text/javascript">
+    //加载业主信息
+    function loadstu() {
+        var data = {
+            "size": 5,
+            "num": 0
+        };
+        $.ajax({
+            url: "selectOrderState",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            success: function (data) {
+                if (data.code == 500) {
+                    window.location.href = "http://localhost:8080/forest/pages-login.html";
+                } else {
+                    var str = null;
+                    for (var i = 0; i < data.orderList.length; i++) {
+                        str += "<tr>";
+                        str += "<td>" + (i + 1) + "</td>";
+                        str += "<td>" + data.orderList[i].message.yeZhuName + "</td>";
+                        str += "<td>" + data.orderList[i].message.yeZhuSex + "</td>";
+                        str += "<td>" + data.orderList[i].message.yeZhuPhone + "</td>";
+                        str += "<td>" + data.orderList[i].message.yeZhuSFZ + "</td>";
+                        str += "<td>" + data.orderList[i].message.yeZhuEmail + "</td>";
+                        str += "<td>" + data.orderList[i].message.yeZhuTime + "</td>";
+                        str += "<td class=\"text-center\"><a href=\"javascript:void(0);\"  onclick='orederUpdate(" + data.orderList[i].message.yeZhuID + ",this)' class=\"badge-info btn-sm mg-y-5\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"Edit\"><i>通知</i></a></td>";
+                        str += "</tr>";
+                    }
+                }
+                $("#sbody").empty();
+                $("#sbody").append(str);
+                $("#name").html(data.names);
+                $("#name1").html(data.names);
+                $("#admin").html(data.names);
+            }
+        });
+
+    }
+    //收益
+    //退出
+    function sumNum() {
+        $.ajax({
+            url: "selectSumOrderName",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                //$5685K
+                $("#price").html("$"+data.price+"K");
+                $("#sum").html("$"+data.sum+"K");
+                $("#count").html(data.count)
+                $("#orderList").html(data.orderList);
+            }
+        });
+    }
+    //用户数量
+    //未缴费数量
+
+
+
+
+
+
+
+    //退出
+    function tuichu() {
+        $.ajax({
+            url: "tuiChu",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                window.location.href = "http://localhost:8080/forest/pages-login.html";
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    $(function () {
+        loadstu();
+        sumNum();
+    });
+</script>
+</html>

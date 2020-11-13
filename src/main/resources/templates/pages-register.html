@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>FOREST物业管理系统后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
+    <!-- App css -->
+    <link href="assets/css/icons.min1.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/app.min1.css" rel="stylesheet" type="text/css"/>
+
+
+    <style type="text/css">
+        .mmm {
+            font-size: 10px;
+            color: red;
+        }
+    </style>
+    <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+
+<body class="authentication-bg">
+
+<div class="account-pages mt-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card">
+                    <!-- Logo-->
+                    <div class="card-header pt-4 pb-4 text-center bg-primary">
+                        <a href="index.html">
+                            <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                        </a>
+                    </div>
+                    <div class="card-body p-4">
+
+                        <div class="text-center w-75 m-auto">
+                            <h4 class="text-dark-50 text-center mt-0 font-weight-bold">免费注册</h4>
+                            <p class="text-muted mb-4">没有账户？创建你的账户， </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="XtYongUserName">登录昵称: <span id="XtYong_1"></span></label>
+                            <input class="form-control" type="text" id="XtYongUserName" placeholder="请输入用户名" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="XtYongPassward">用户密码:<span id="XtYong_2"></span></label>
+                            <input class="form-control" type="password" id="XtYongPassward" required
+                                   placeholder="请输入密码">
+                        </div>
+                        <div class="form-group">
+                            <label for="XtYongPassward_1">确认密码:<span id="XtYong_3"></span></label>
+                            <input class="form-control" type="password" id="XtYongPassward_1" required
+                                   placeholder="请再次输入密码">
+                        </div>
+                        <div class="form-group">
+                            <label for="XtYongName">用户姓名:<span id="XtYong_4"></span></label>
+                            <input class="form-control" type="text" required id="XtYongName" placeholder="请输入用户姓名">
+                        </div>
+                        <div class="form-group">
+                            <label for="XtYongHuSFZ">身份证号:<span id="XtYong_5"></span></label>
+                            <input class="form-control" type="text" required id="XtYongHuSFZ" placeholder="请输入身份证号">
+                        </div>
+                        <div class="form-group">
+                            <label for="XtYongHuSex">性别: <span id="XtYong_6"></span></label>
+                            <select class="form-control" required id="XtYongHuSex">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="XtYongHuEmail">电子邮件:<span id="XtYong_7"></span></label>
+                            <input class="form-control" type="text" required id="XtYongHuEmail" placeholder="请输入电子邮件">
+                        </div>
+                        <div class="form-group">
+                            <label for="XtYongHuPhone">手机号:<span id="XtYong_8"></span></label>
+                            <input class="form-control" type="text" required id="XtYongHuPhone" placeholder="请输入手机号">
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                <label class="custom-control-label" for="checkbox-signup">我接受 <a
+                                        href="pages-register-Termsandconditions.html"
+                                        class="text-muted">条款和条件</a></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-0 text-center">
+                            <button class="btn btn-primary" type="submit" id="button">注册</button>
+                        </div>
+                    </div> <!-- end card-body -->
+                </div>
+                <!-- end card -->
+
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <p class="text-muted">已经有帐号了? <a href="pages-login.html" class="text-muted ml-1"><b>登录</b></a>
+                        </p>
+                    </div> <!-- end col-->
+                </div>
+                <!-- end row -->
+
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+<!-- end page -->
+
+<footer class="footer footer-alt">
+    2020 - 2021 © Forest - Coderthemes.com
+</footer>
+
+<!-- App js -->
+<script src="assets/js/app.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
+
+
+</body>
+
+<script type="text/javascript">
+    var imgObjTrue = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    //账号验证
+    var flas = false; //标识符
+    $("#XtYongUserName").blur(function () {
+        //取出账号值
+        var name = $("#XtYongUserName").val();
+        //		账号必须为字母+数字的组合，不能出现特殊字符
+        var varreg = /^(?=.*[a-zA-Z]+)(?=.*[0-9]+)[a-zA-Z0-9]+$/;
+        //alert(varreg.test(name))
+        if (name == null || name == "") {
+            $("#XtYong_1").empty();
+            var XtYong_1 = $("<span class='mmm'>登录账号不能为空,请重新输入</span>");
+            $("#XtYong_1").append(imgObjFalse);
+            $("#XtYong_1").append(XtYong_1);
+            $("#XtYongUserName").val("");
+            flas = false;
+        } else if (!varreg.test(name)) {
+            $("#XtYong_1").empty();
+            var XtYong_1 = $("<span class='mmm'>必须是字母+数字不能出现特殊字符</span>");
+            $("#XtYong_1").append(imgObjFalse);
+            $("#XtYong_1").append(XtYong_1);
+            $("#XtYongUserName").val("");
+            flas = false;
+        } else {
+            $("#XtYong_1").empty();
+            $("#XtYong_1").append(imgObjTrue);
+            findUserName()
+            flas = true;
+            return;
+        }
+    });
+    var imgObjTrue1 = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse1 = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    //密码验证
+    var flas1 = false;
+    $("#XtYongPassward").blur(function () {
+        var pass = $("#XtYongPassward").val(); //
+        //密码规则为字母+数字的组合，不得出现特殊字符
+        var patrm1 = /^[a-z0-9]{6,10}$/;
+        if (pass == null || pass == "") {
+            $("#XtYong_2").empty();
+            var XtYong_2 = $("<span class='mmm'>登录密码不能为空,请重新输入</span>");
+            $("#XtYong_2").append(imgObjFalse1);
+            $("#XtYong_2").append(XtYong_2);
+            $("#XtYongPassward").val("");
+            flas1 = false;
+        } else if (!patrm1.test(pass)) {
+            $("#XtYong_2").empty();
+            var XtYong_2 = $("<span class='mmm'>小写字母+数字，不得出现特殊字符，长度为6-10</span>");
+            $("#XtYong_2").append(imgObjFalse1);
+            $("#XtYong_2").append(XtYong_2);
+            $("#XtYongPassward").val("");
+            flas1 = false;
+        } else {
+            $("#XtYong_2").empty();
+            $("#XtYong_2").append(imgObjTrue1);
+            flas1 = true;
+            return;
+        }
+
+    });
+
+    var imgObjTrue2 = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse2 = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    //重复密码验证
+    var flas2 = false;
+    $("#XtYongPassward_1").blur(function () {
+        var pass2 = $("#XtYongPassward_1").val(); //
+        var pass1 = $("#XtYongPassward").val();
+
+        if (pass2 == null || pass2 == "") {
+            $("#XtYong_3").empty();
+            var XtYong_3 = $("<span class='mmm'>密码验证不能为空,请重新输入</span>");
+            $("#XtYong_3").append(imgObjFalse2);
+            $("#XtYong_3").append(XtYong_3);
+            $("#XtYongPassward_1").val("");
+            flas2 = false;
+        } else if (pass2 != pass1) {
+            $("#XtYong_3").empty();
+            var XtYong_3 = $("<span class='mmm'>两次密码输入不一致，请重新输入</span>");
+            $("#XtYong_3").append(imgObjFalse2);
+            $("#XtYong_3").append(XtYong_3);
+            $("#XtYongPassward_1").val("");
+            flas2 = false;
+        } else {
+            $("#XtYong_3").empty();
+            $("#XtYong_3").append(imgObjTrue2);
+            flas2 = true;
+            return;
+        }
+
+    });
+    var imgObjTrue3 = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse3 = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    //用户姓名验证
+    var flas3 = false;
+    $("#XtYongName").blur(function () {
+        var nc = $("#XtYongName").val(); //
+        var pattern = /^[\u4E00-\u9FA5]{2,6}$/;
+        if (nc == null || nc == "") {
+            $("#XtYong_4").empty();
+            var XtYong_4 = $("<span class='mmm'>用户姓名输入不能为空，请重新输入</span>");
+            $("#XtYong_4").append(imgObjFalse3);
+            $("#XtYong_4").append(XtYong_4);
+            $("#XtYongName").val("");
+            flas3 = false;
+        } else if (!pattern.test(nc)) {
+            $("#XtYong_4").empty();
+            var XtYong_4 = $("<span class='mmm'>请输入中文名称</span>");
+            $("#XtYong_4").append(imgObjFalse3);
+            $("#XtYong_4").append(XtYong_4);
+            $("#XtYongName").val("");
+            flas3 = false;
+        } else {
+            $("#XtYong_4").empty();
+            $("#XtYong_4").append(imgObjTrue3);
+            flas3 = true;
+            return;
+        }
+
+
+    });
+
+    //身份证验证
+    var imgObjTrue4 = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse4 = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    var flas4 = false;
+    $("#XtYongHuSFZ").blur(function () {
+        var sfz = $("#XtYongHuSFZ").val(); //
+        //判断是身份证正则表达式
+        var aa = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+
+        if (sfz == null || sfz == "") {
+            $("#XtYong_5").empty();
+            var XtYong_5 = $("<span class='mmm'>身份证号输入不能为空，请重新输入</span>");
+            $("#XtYong_5").append(imgObjFalse4);
+            $("#XtYong_5").append(XtYong_5);
+            $("#XtYongHuSFZ").val("");
+            flas4 = false;
+
+        } else if (!aa.test(sfz) || sfz.length != 18) {
+            $("#XtYong_5").empty();
+            var XtYong_5 = $("<span class='mmm'>身份证号输入有误，请重新输入</span>");
+            $("#XtYong_5").append(imgObjFalse4);
+            $("#XtYong_5").append(XtYong_5);
+            $("#XtYongHuSFZ").val("");
+            flas4 = false;
+        } else {
+            $("#XtYong_5").empty();
+            $("#XtYong_5").append(imgObjTrue4);
+            findUsrCredit();
+            flas4 = true;
+            return;
+        }
+
+    });
+
+    var imgObjTrue5 = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse5 = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    //性别验证
+    var flas5 = false;
+    $("#XtYongHuSex").blur(function () {
+        var sex = $("#XtYongHuSex").val(); //
+        if (sex == null || sex == "") {
+            $("#XtYong_6").empty();
+            $("#XtYong_6").append(imgObjFalse5);
+            flas5 = false;
+        } else {
+            $("#XtYong_6").empty();
+            $("#XtYong_6").append(imgObjTrue5);
+            flas5 = true;
+            return;
+        }
+    });
+
+    var imgObjTrue6 = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse6 = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    //邮箱验证
+    var flas6 = false;
+    $("#XtYongHuEmail").blur(function () {
+        var emil = $("#XtYongHuEmail").val();
+        //邮箱的正则表单达式
+        var aa = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+        if (emil == null || emil == "") {
+            $("#XtYong_7").empty();
+            var XtYong_7 = $("<span class='mmm'>邮箱账号输入不能为空，请重新输入</span>");
+            $("#XtYong_7").append(imgObjFalse6);
+            $("#XtYong_7").append(XtYong_7);
+            $("#XtYongHuEmail").val("");
+            flas6 = false;
+        } else if (!aa.test(emil)) {
+            $("#XtYong_7").empty();
+            var XtYong_7 = $("<span class='mmm'>邮箱要验证是否带有@，必须以.com结尾</span>");
+            $("#XtYong_7").append(imgObjFalse6);
+            $("#XtYong_7").append(XtYong_7);
+            $("#XtYongHuEmail").val("");
+            flas6 = false;
+        } else {
+            $("#XtYong_7").empty();
+            $("#XtYong_7").append(imgObjTrue6);
+            flas6 = true;
+            return;
+        }
+
+    });
+
+    var imgObjTrue7 = $("<img src='assets/true.jpg' height=\"22\" width=\"23\">");
+    var imgObjFalse7 = $("<img src='assets/false.jpg' height=\"22\" width=\"23\">");
+    //手机号验证
+    var flas7 = false;
+    $("#XtYongHuPhone").blur(function () {
+        var tell1 = $("#XtYongHuPhone").val(); //
+        //以1开头的正则表达式
+        var aa = /^1\d{10}$/
+
+        if (tell1 == null || tell1 == "") {
+            $("#XtYong_8").empty();
+            var XtYong_8 = $("<span class='mmm'>手机号输入不能为空，请重新输入</span>");
+            $("#XtYong_8").append(imgObjFalse7);
+            $("#XtYong_8").append(XtYong_8);
+            $("#XtYongHuPhone").val("");
+            flas7 = false;
+        } else if (!aa.test(tell1) || tell1.length != 11) {
+            $("#XtYong_8").empty();
+            var XtYong_8 = $("<span class='mmm'>必须是纯数字11位1开头</span>");
+            $("#XtYong_8").append(imgObjFalse7);
+            $("#XtYong_8").append(XtYong_8);
+            $("#XtYongHuPhone").val("");
+            flas7 = false;
+        } else {
+            $("#XtYong_8").empty();
+            $("#XtYong_8").append(imgObjTrue7);
+            flas7 = true;
+            return;
+        }
+
+    });
+
+
+    //注册
+    function register() {
+        var XtYongUserName = $("#XtYongUserName").val();  //登录昵称
+        var XtYongPassward = $("#XtYongPassward").val();  //用户密码
+        var XtYongPassward_1 = $("#XtYongPassward_1").val();//再次输入密码
+        var XtYongName = $("#XtYongName").val();          //用户姓名
+        var XtYongHuSFZ = $("#XtYongHuSFZ").val();        //身份证号
+        var XtYongHuSex = $("#XtYongHuSex").val();        //用户性别
+        var XtYongHuEmail = $("#XtYongHuEmail").val();    //电子邮件
+        var XtYongHuPhone = $("#XtYongHuPhone").val();    //手机号
+        swal.fire({
+            type: 'warning', // 弹框类型
+            title: '确认', //标题
+            text: "请确认是否注册此信息", //显示内容
+            confirmButtonColor: '#3085d6',// 确定按钮的 颜色
+            confirmButtonText: '确定',// 确定按钮的 文字
+            showCancelButton: true, // 是否显示取消按钮
+            cancelButtonColor: '#d33', // 取消按钮的 颜色
+            cancelButtonText: "取消", // 取消按钮的 文字
+            focusCancel: true, // 是否聚焦 取消按钮
+            reverseButtons: true  // 是否 反转 两个按钮的位置 默认是  左边 确定  右边 取消
+        }).then(function (isConfirm) {
+            if (isConfirm.value) {
+                if ($("#checkbox-signup").is(":checked")) {
+                    if (flas == true && flas1 == true && flas2 == true && flas3 == true && flas4 == true && flas6 == true && flas7 == true) {
+                        var data = {
+                            "xtYongUserName": XtYongUserName,
+                            "xtYongMiMa": XtYongPassward,
+                            "xtYongName": XtYongName,
+                            "xtYongHuSFZ": XtYongHuSFZ,
+                            "xtYongHuSex": XtYongHuSex,
+                            "xtYongHuEmail": XtYongHuEmail,
+                            "xtYongHuPhone": XtYongHuPhone
+                        };
+                        $.ajax({
+                            url: "register",
+                            type: "POST",
+                            dataType: "json",
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify(data),
+                            async: false,
+                            success: function (data) {
+                                if (data.code == 200) {
+                                    window.location.href="http://localhost:8080/forest/pages-login.html";
+                                } else if(data.code=400)
+                                    {
+                                        Swal.fire("提示", "请输入完整数据", "question");
+                                    }else {
+                                    window.location.href="http://localhost:8080/forest/pages-register.html";
+                                }
+                            }
+                        });
+                    } else {
+                        Swal.fire("提示", "输入数据有误", "question");
+                    }
+                } else {
+                    Swal.fire("提示", "请接收服务条款", "warning");
+                }
+            } else {
+                Swal.fire("提示", "已取消提交", "error");
+            }
+        })
+
+
+    }
+    //获取系统用户登录名
+    function findUserName() {
+        var XtYongUserName = $("#XtYongUserName").val();  //登录昵称
+        var data = {
+            "xtYongUserName": XtYongUserName
+        };
+        $.ajax({
+            url: "findUserName",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            async: false,
+            success: function (data) {
+                if (data.code == 200) {
+                } else {
+                    Swal.fire("提示", "已存在该用户名", "warning");
+                    $("#XtYongUserName").val("");
+                    $("#XtYong_1").empty();
+                    var XtYong_1 = $("<span class='mmm'>必须是字母+数字不能出现特殊字符</span>");
+                    $("#XtYong_1").append(imgObjFalse);
+                    $("#XtYong_1").append(XtYong_1);
+                }
+            }
+        });
+    }
+    //获取系统用户的身份证
+    function findUsrCredit() {
+        var XtYongHuSFZ = $("#XtYongHuSFZ").val();        //身份证号
+        var data = {
+            "xtYongHuSFZ": XtYongHuSFZ
+        };
+        $.ajax({
+            url: "findUsrCredit",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            async: false,
+            success: function (data) {
+                if (data.code == 200) {
+
+                } else {
+                    Swal.fire("提示", "已存在该用户", "warning");
+                    $("#XtYongHuSFZ").val("");
+                    $("#XtYong_4").empty();
+                    var XtYong_4 = $("<span class='mmm'>用户姓名输入不能为空，请重新输入</span>");
+                    $("#XtYong_4").append(imgObjFalse3);
+                    $("#XtYong_4").append(XtYong_4);
+
+                }
+            }
+        });
+    }
+
+    $(function () {
+        //点击注册
+        $("#button").click(function () {
+            register();
+
+        })
+
+    });
+</script>
+
+</html>

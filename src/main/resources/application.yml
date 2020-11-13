@@ -1,0 +1,64 @@
+#启动配置
+server:
+  port: 8080
+  tomcat:
+    max-swallow-size: -1
+  servlet:
+    context-path: /forest
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/javascript,application/json,application/xml,text/html,text/xml,text/plain,text/css,image/*
+#专用配置
+project:
+  #文件上传根目录
+  upload:
+    location:
+      windows: D:/images/
+      linux: /local/
+spring:
+  thymeleaf:
+    cache: false
+  #发送邮件配置
+  mail:
+    host: smtp.163.com
+    port: 465
+    username: wh508377132@163.com
+    password: RKINAVUACZHJAAYJ
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+  #连接数据库配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/db_forest_village?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: wanghuan
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 15
+      auto-commit: true
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  #配置资源路径
+  resource:
+    static-locations: classpath:/static/,classpath:/public/,classpath:/templates/,classpath:/webStatic/,
+
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+
+mybatis:
+  mapper-locations: classpath:com/forest/communityproperty/mapper/xml/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true

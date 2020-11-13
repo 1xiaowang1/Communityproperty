@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_xitongyonghuMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_xitongyonghu">
+        <!--@mbg.generated-->
+        <!--@Table forest_xitongyonghu-->
+        <id column="xtYongHuID" property="xtYongHuID"/>
+        <result column="xtYongUserName" property="xtYongUserName"/>
+        <result column="xtYongMiMa" property="xtYongMiMa"/>
+        <result column="xtYongName" property="xtYongName"/>
+        <result column="xtYongHuSFZ" property="xtYongHuSFZ"/>
+        <result column="xtYongHuSex" property="xtYongHuSex"/>
+        <result column="xtYongHuEmail" property="xtYongHuEmail"/>
+        <result column="xtYongHuPhone" property="xtYongHuPhone"/>
+        <result column="xtYongHuFlower" property="xtYongHuFlower"/>
+        <result column="xtYongHuState" property="xtYongHuState"/>
+        <result column="xtYongHuJiBie" property="xtYongHuJiBie"/>
+        <result column="xtDate" property="xtDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        xtYongHuID,xtYongUserName,xtYongMiMa,xtYongName,xtYongHuSFZ,xtYongHuSex,xtYongHuEmail,xtYongHuPhone,xtYongHuFlower,xtYongHuState,xtYongHuJiBie,xtDate
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from forest_xitongyonghu
+        where xtYongHuID = #{xtYongHuID}
+    </select>
+
+    <select id="selectByPrimaryKeys" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from forest_xitongyonghu
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from forest_xitongyonghu
+        where xtYongHuID = #{xtYongHuID}
+    </delete>
+
+    <insert id="insertSelective" keyColumn="xtYongHuID" keyProperty="xtYongHuID" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into forest_xitongyonghu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="xtYongUserName != null and xtYongUserName != ''">
+                xtYongUserName,
+            </if>
+            <if test="xtYongMiMa != null and xtYongMiMa != ''">
+                xtYongMiMa,
+            </if>
+            <if test="xtYongName != null and xtYongName != ''">
+                xtYongName,
+            </if>
+            <if test="xtYongHuSFZ != null and xtYongHuSFZ != ''">
+                xtYongHuSFZ,
+            </if>
+            <if test="xtYongHuSex != null and xtYongHuSex != ''">
+                xtYongHuSex,
+            </if>
+            <if test="xtYongHuEmail != null and xtYongHuEmail != ''">
+                xtYongHuEmail,
+            </if>
+            <if test="xtYongHuPhone != null and xtYongHuPhone != ''">
+                xtYongHuPhone,
+            </if>
+            <if test="xtYongHuFlower != null and xtYongHuFlower != ''">
+                xtYongHuFlower,
+            </if>
+            <if test="xtYongHuState != null and xtYongHuState != ''">
+                xtYongHuState,
+            </if>
+            <if test="xtYongHuJiBie != null and xtYongHuJiBie != ''">
+                xtYongHuJiBie,
+            </if>
+            <if test="xtDate != null and xtDate != ''">
+                xtDate
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="xtYongUserName != null and xtYongUserName != ''">
+                #{xtYongUserName},
+            </if>
+            <if test="xtYongMiMa != null and xtYongMiMa != ''">
+                #{xtYongMiMa},
+            </if>
+            <if test="xtYongName != null and xtYongName != ''">
+                #{xtYongName},
+            </if>
+            <if test="xtYongHuSFZ != null and xtYongHuSFZ != ''">
+                #{xtYongHuSFZ},
+            </if>
+            <if test="xtYongHuSex != null and xtYongHuSex != ''">
+                #{xtYongHuSex},
+            </if>
+            <if test="xtYongHuEmail != null and xtYongHuEmail != ''">
+                #{xtYongHuEmail},
+            </if>
+            <if test="xtYongHuPhone != null and xtYongHuPhone != ''">
+                #{xtYongHuPhone},
+            </if>
+            <if test="xtYongHuFlower != null and xtYongHuFlower != ''">
+                #{xtYongHuFlower},
+            </if>
+            <if test="xtYongHuState != null and xtYongHuState != ''">
+                #{xtYongHuState},
+            </if>
+            <if test="xtYongHuJiBie != null and xtYongHuJiBie != ''">
+                #{xtYongHuJiBie},
+            </if>
+            <if test="xtDate != null and xtDate != ''">
+                #{xtDate}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
+        <!--@mbg.generated-->
+        update forest_xitongyonghu
+        <set>
+            <if test="xtYongUserName != null and xtYongUserName != ''">
+                xtYongUserName=#{xtYongUserName},
+            </if>
+            <if test="xtYongMiMa != null and xtYongMiMa != ''">
+                xtYongMiMa=#{xtYongMiMa},
+            </if>
+            <if test="xtYongName != null and xtYongName != ''">
+                xtYongName=#{xtYongName},
+            </if>
+            <if test="xtYongHuSFZ != null and xtYongHuSFZ != ''">
+                xtYongHuSFZ=#{xtYongHuSFZ},
+            </if>
+            <if test="xtYongHuSex != null and xtYongHuSex != ''">
+                xtYongHuSex=#{xtYongHuSex},
+            </if>
+            <if test="xtYongHuEmail != null and xtYongHuEmail != ''">
+                xtYongHuEmail=#{xtYongHuEmail},
+            </if>
+            <if test="xtYongHuPhone != null and xtYongHuPhone != ''">
+                xtYongHuPhone=#{xtYongHuPhone},
+            </if>
+            <if test="xtYongHuFlower != null and xtYongHuFlower != ''">
+                xtYongHuFlower=#{xtYongHuFlower},
+            </if>
+            <if test="xtYongHuState != null and xtYongHuState != ''">
+                xtYongHuState=#{xtYongHuState},
+            </if>
+            <if test="xtYongHuJiBie != null and xtYongHuJiBie != ''">
+                xtYongHuJiBie=#{xtYongHuJiBie},
+            </if>
+            <if test="xtDate != null and xtDate != ''">
+                xtDate=#{xtDate}
+            </if>
+        </set>
+        where xtYongHuID = #{xtYongHuID}
+    </update>
+
+    <!--业务人员登录-->
+    <select id="doesTheUserExist" resultType="java.lang.String">
+        SELECT xtYongHuID
+        FROM forest_xitongyonghu
+        WHERE xtYongUserName = #{xtYongUserName}
+          AND xtYongMiMa = #{xtYongMiMa} and xtYongHuJiBie=#{xtYongHuJiBie} and xtYongHuState=#{xtYongHuState}
+    </select>
+    <!--根据用户名系统用户检测是否存在-->
+    <select id="findUserName" resultType="java.lang.String">
+        SELECT 1
+        FROM forest_xitongyonghu
+        WHERE xtYongUserName = #{xtYongUserName}
+    </select>
+    <!--根据系统用户身份证检测是否存在-->
+    <select id="findUserCredit" resultType="java.lang.String">
+        SELECT 1
+        FROM forest_xitongyonghu
+        WHERE xtYongHuSFZ = #{xtYongHuSFZ}
+    </select>
+    <!--根据系统用户身份证和姓名检测是否存在-->
+    <select id="findUserNameAndSFZ" resultType="java.lang.String">
+        SELECT 1
+        FROM forest_xitongyonghu
+        WHERE xtYongName = #{xtYongName}
+        AND xtYongHuSFZ = #{xtYongHuSFZ}
+    </select>
+    <!--根据系统用户身份证和姓名检测是否存在-->
+    <update id="updateByPrimaryKey" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
+        <!--@mbg.generated-->
+        update forest_xitongyonghu
+        <set>
+            <if test="xtYongMiMa != null and xtYongMiMa != ''">
+                xtYongMiMa=#{xtYongMiMa},
+            </if>
+            <if test="xtDate != null and xtDate != ''">
+                xtDate=#{xtDate}
+            </if>
+        </set>
+        where xtYongName = #{xtYongName}
+        AND xtYongHuSFZ = #{xtYongHuSFZ}
+    </update>
+
+
+    <!--管理员登录-->
+    <select id="pageUserExist" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+        SELECT *
+        FROM forest_xitongyonghu
+        WHERE xtYongUserName = #{xtYongUserName}
+          AND xtYongMiMa = #{xtYongMiMa} and xtYongHuJiBie=#{xtYongHuJiBie} and xtYongHuState=#{xtYongHuState}
+    </select>
+
+
+
+    <!--物业人员进行数据显示-->
+    <select id="pageUserSelect" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+        SELECT *
+        FROM forest_xitongyonghu
+        WHERE  xtYongHuJiBie=1  order by xtDate desc limit #{num},#{size}
+    </select>
+
+    <!--物业人员进行数据显示-->
+    <select id="pageUserSelects" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+        SELECT *
+        FROM forest_xitongyonghu
+        WHERE  xtYongHuJiBie!=3   order by xtDate desc limit #{num},#{size}
+    </select>
+    <!--物业人员进行数据统计-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_xitongyonghu
+        WHERE  xtYongHuJiBie=1
+    </select>
+    <!--物业人员进行数据统计-->
+    <select id="findSelectCounts" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_xitongyonghu
+        WHERE  xtYongHuJiBie!=3
+    </select>
+    <!--修改状态-->
+    <update id="updateSelectiveUsers"  parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
+        <!--@mbg.generated-->
+        update forest_xitongyonghu
+        <set>
+            <if test="xtYongHuState != null and xtYongHuState != ''">
+                xtYongHuState = #{xtYongHuState},
+            </if>
+            <if test="xtDate != null and xtDate != ''">
+                xtDate=#{xtDate}
+            </if>
+        </set>
+        where xtYongHuID = #{xtYongHuID}
+    </update>
+
+    <update id="updateSelectiveJiBie"  parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
+        <!--@mbg.generated-->
+        update forest_xitongyonghu
+        <set>
+            <if test="xtYongHuJiBie != null and xtYongHuJiBie != ''">
+                xtYongHuJiBie = #{xtYongHuJiBie},
+            </if>
+            <if test="xtDate != null and xtDate != ''">
+                xtDate=#{xtDate}
+            </if>
+        </set>
+        where xtYongHuID = #{xtYongHuID}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteByPrimaryKeys" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
+        delete
+        from forest_xitongyonghu
+        where xtYongHuID =#{xtYongHuID}
+    </delete>
+
+    <!--物业人员进行数据显示 姓名-->
+    <select id="pageUserSelectXtYongName" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+        SELECT *
+        FROM forest_xitongyonghu
+        WHERE  xtYongHuJiBie!=3  and xtYongName like "%"#{xtYongName}"%"  order by xtDate desc
+    </select>
+    <!--物业人员进行数据显示 姓名-->
+    <select id="pageUserSelectXtYongNames" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+        SELECT *
+        FROM forest_xitongyonghu
+        WHERE  xtYongHuJiBie=1  and xtYongName like "%"#{xtYongName}"%"  order by xtDate desc
+    </select>
+    <!--物业人员申请进行数据显示-->
+    <select id="pageUserSelectUser"  resultMap="BaseResultMap">
+        SELECT *
+        FROM forest_xitongyonghu
+        WHERE  xtYongHuJiBie!=2  and xtYongHuState=2
+    </select>
+
+
+
+
+
+
+</mapper>

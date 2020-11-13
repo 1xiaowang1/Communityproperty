@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_roomnameMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_roomname">
+        <!--@mbg.generated-->
+        <!--@Table Forest_roomname-->
+        <id column="roomID" property="roomID"/>
+        <result column="roomName" property="roomName"/>
+        <result column="roomDate" property="roomDate"/>
+        <result column="roomBeiZhu" property="roomBeiZhu"/>
+    </resultMap>
+
+    <!--查询楼房记录信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_roomname" resultMap="BaseResultMap">
+     SELECT * FROM forest_roomname order by roomName desc
+    </select>
+    <!--增加楼房记录信息 -->
+    <insert id="insertSelective" keyColumn="roomID" keyProperty="roomID" parameterType="com.forest.communityproperty.entity.Forest_roomname"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into forest_roomname
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roomName != null and roomName != ''">
+                roomName,
+            </if>
+            <if test="roomDate != null and roomDate != ''">
+                roomDate,
+            </if>
+            <if test="roomBeiZhu != null and roomBeiZhu != ''">
+                roomBeiZhu
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roomName != null and roomName != ''">
+                #{roomName},
+            </if>
+            <if test="roomDate != null and roomDate != ''">
+                #{roomDate},
+            </if>
+            <if test="roomBeiZhu != null and roomBeiZhu != ''">
+                #{roomBeiZhu}
+            </if>
+        </trim>
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteByPrimaryKeys" parameterType="com.forest.communityproperty.entity.Forest_roomname">
+        delete
+        from forest_roomname
+        where roomID =#{roomID}
+    </delete>
+
+</mapper>

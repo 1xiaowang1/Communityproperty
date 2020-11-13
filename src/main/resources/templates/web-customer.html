@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FOREST公司官方</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+    //加载业主信息
+    function loadstu() {
+        var data = {
+            "num": 1
+        };
+        $.ajax({
+            url: "webCustomer",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            success: function (data) {
+                if (data.code == 200) {
+                    window.location.href = "http://localhost:8888/index?username=" + data.name + "&password=1";
+                } else {
+                    window.location.href = "http://localhost:8080/forest/web-login.html";
+                }
+            }
+        });
+    }
+
+    $(function () {
+        loadstu();
+    });
+</script>
+</html>

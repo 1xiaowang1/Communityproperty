@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_carareatypeMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_carareatype">
+        <id column="carAreaTypeID" property="carAreaTypeID"/>
+        <result column="carAreaTypeName" property="carAreaTypeName"/>
+        <result column="carAreaTypeDate" property="carAreaTypeDate"/>
+        <result column="carAreaTypeBeiZhu" property="carAreaTypeBeiZhu"/>
+    </resultMap>
+    <!--查询车位信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_carareatype" resultMap="BaseResultMap">
+     SELECT * FROM forest_carareatype order by carAreaTypeDate desc
+    </select>
+</mapper>

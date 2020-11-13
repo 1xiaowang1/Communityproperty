@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_carmessageMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_carmessage">
+        <id column="carID" property="carID"/>
+        <result column="carImage" property="carImage"/>
+        <result column="carPlates" property="carPlates"/>
+        <result column="carStates" property="carStates"/>
+        <result column="catDate" property="catDate"/>
+        <result column="carBeiZhu" property="carBeiZhu"/>
+    </resultMap>
+    <!--查询车辆信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_carmessage" resultMap="BaseResultMap">
+     SELECT * FROM forest_carmessage order by catDate desc
+    </select>
+    <!--新增车辆信息-->
+    <insert id="insertSelective" keyColumn="carID" keyProperty="carID"
+            parameterType="com.forest.communityproperty.entity.Forest_carmessage"
+            useGeneratedKeys="true">
+        insert into forest_carmessage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="carImage != null and carImage != ''">
+                carImage,
+            </if>
+            <if test="carPlates != null and carPlates != ''">
+                carPlates,
+            </if>
+            <if test="carStates != null and carStates != ''">
+                carStates,
+            </if>
+            <if test="catDate != null and catDate != ''">
+                catDate,
+            </if>
+            <if test="carBeiZhu != null and carBeiZhu != ''">
+                carBeiZhu,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="carImage != null and carImage != ''">
+                #{carImage},
+            </if>
+            <if test="carPlates != null and carPlates != ''">
+                #{carPlates},
+            </if>
+            <if test="carStates != null and carStates != ''">
+                #{carStates},
+            </if>
+            <if test="catDate != null and catDate != ''">
+                #{catDate},
+            </if>
+            <if test="carBeiZhu != null and carBeiZhu != ''">
+                #{carBeiZhu},
+            </if>
+        </trim>
+    </insert>
+
+
+    <!--上传图片-->
+    <update id="updateByPrimaryImage"  parameterType="com.forest.communityproperty.entity.Forest_carmessage">
+        update forest_carmessage
+        <set>
+            <if test="carImage != null and carImage != ''">
+                carImage = #{carImage},
+            </if>
+        </set>
+        where carID = #{carID}
+    </update>
+
+
+    <!--删除关联数据-->
+    <delete id="deleteByPrimaryKey"  parameterType="java.lang.Integer">
+        delete
+        from forest_carmessage
+        where carID =#{carID}
+    </delete>
+
+    <!--修改车辆信息-->
+    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_carmessage">
+        update forest_carmessage
+        <set>
+            <if test="carPlates != null and carPlates != ''">
+                carPlates = #{carPlates},
+            </if>
+            <if test="carStates != null and carStates != ''">
+                carStates = #{carStates},
+            </if>
+            <if test="catDate != null and catDate != ''">
+                catDate = #{catDate},
+            </if>
+        </set>
+        where carID = #{carID}
+    </update>
+
+
+
+
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_currentEntryMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_currentEntry">
+        <!--@mbg.generated-->
+        <!--@Table forest_xitongyonghu-->
+        <id column="currentEntryID" property="currentEntryID"/>
+        <result column="currentEntryName" property="currentEntryName"/>
+        <result column="xtYongName" property="user.xtYongName"/>
+        <result column="xtYongHuID" property="xtYongHuID"/>
+        <result column="yeZhuID" property="yeZhuID"/>
+        <result column="styleID" property="styleID"/>
+        <result column="yeZhuName" property="message.yeZhuName"/>
+        <result column="styleName" property="currentEntryStyle.styleName"/>
+        <result column="currentEntryBeiZhu" property="currentEntryBeiZhu"/>
+    </resultMap>
+
+    <!--查询日常记录信息-->
+    <select id="selectEmployee"  resultMap="BaseResultMap">
+    SELECT * FROM forest_currententry c ,forest_xitongyonghu x ,forest_yezhumessage y , forest_currententrystyle s
+    where  c.styleID = s.styleID and c.xtYongHuID=x.xtYongHuID and c.yeZhuID = y.yeZhuID
+  </select>
+
+    <!--增加日常记录信息-->
+    <insert id="insertSelectiveS" keyColumn="currentEntryID" keyProperty="currentEntryID" parameterType="com.forest.communityproperty.entity.Forest_currentEntry"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into forest_currententry
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="currentEntryName != null and currentEntryName != ''">
+                currentEntryName,
+            </if>
+            <if test="xtYongHuID != null and xtYongHuID != ''">
+                xtYongHuID,
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                yeZhuID,
+            </if>
+            <if test="styleID != null and styleID != ''">
+                styleID
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="currentEntryName != null and currentEntryName != ''">
+                #{currentEntryName},
+            </if>
+            <if test="xtYongHuID != null and xtYongHuID != ''">
+                #{xtYongHuID},
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                #{yeZhuID},
+            </if>
+            <if test="styleID != null and styleID != ''">
+                #{styleID}
+            </if>
+        </trim>
+    </insert>
+</mapper>

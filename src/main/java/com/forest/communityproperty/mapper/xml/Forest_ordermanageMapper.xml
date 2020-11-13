@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_ordermanageMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_ordermanage">
+        <!--@mbg.generated-->
+        <!--@Table Forest_projectmanage-->
+        <id column="orderID" property="orderID"/>
+        <result column="projectID" property="projectID"/>
+        <result column="orderState" property="orderState"/>
+        <result column="orderYear" property="orderYear"/>
+        <result column="orderMonth" property="orderMonth"/>
+        <result column="orderDate" property="orderDate"/>
+        <result column="orderPrice" property="orderPrice"/>
+        <result column="yeZhuID" property="yeZhuID"/>
+        <result column="yeZhuTime" property="message.yeZhuTime"/>
+        <result column="yeZhuID" property="message.yeZhuID"/>
+        <result column="projectName" property="manage.projectName"/>
+        <result column="projectPrice" property="manage.projectPrice"/>
+        <result column="yeZhuName" property="message.yeZhuName"/>
+        <result column="yeZhuSex" property="message.yeZhuSex"/>
+        <result column="yeZhuEmail" property="message.yeZhuEmail"/>
+        <result column="yeZhuSFZ" property="message.yeZhuSFZ"/>
+        <result column="yeZhuPhone" property="message.yeZhuPhone"/>
+
+    </resultMap>
+
+    <!--查询已缴费信息-->
+    <select id="selectEmployeeState" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
+            resultMap="BaseResultMap">
+     SELECT * FROM forest_ordermanage om , forest_projectmanage pm,forest_yezhumessage ym
+      where om.projectID=pm.projectID and om.yeZhuID=ym.yeZhuID and om.orderState=1
+      order by projectDate desc
+       limit  #{num},#{size}
+    </select>
+    <!--查询未缴费信息-->
+    <select id="selectOrderState" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
+            resultMap="BaseResultMap">
+     SELECT * FROM forest_yezhumessage where yeZhuID not in
+     (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
+       limit  #{num},#{size}
+    </select>
+    <!--统计已缴费信息-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_ordermanage
+    </select>
+    <!--统计未缴费信息-->
+    <select id="findOrderSelectCount" resultType="java.lang.Integer">
+       SELECT count(*) FROM forest_yezhumessage where yeZhuID not in
+     (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
+    </select>
+    <!--查询未缴费信息搜索统计-->
+    <select id="findMessageSelectCount" resultType="java.lang.Integer">
+        SELECT count(*) FROM forest_yezhumessage where yeZhuID not in
+        (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
+        and  yeZhuName like "%"#{name}"%"
+    </select>
+    <!--查询未缴费信息搜索-->
+    <select id="selectByPrimaryKeysName" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_yezhumessage where yeZhuID not in
+        (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
+        and  yeZhuName like "%"#{name}"%"  limit  #{num},#{size}
+    </select>
+
+    <!--增加费用信息 -->
+    <insert id="insertSelective" keyColumn="orderID" keyProperty="orderID" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into forest_ordermanage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectID != null and projectID != ''">
+                projectID,
+            </if>
+            <if test="orderState != null and orderState != ''">
+                orderState,
+            </if>
+            <if test="orderPrice != null and orderPrice != ''">
+                orderPrice,
+            </if>
+            <if test="orderYear != null and orderYear != ''">
+                orderYear,
+            </if>
+            <if test="orderMonth != null and orderMonth != ''">
+                orderMonth,
+            </if>
+            <if test="orderDate != null and orderDate != ''">
+                orderDate,
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                yeZhuID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projectID != null and projectID != ''">
+                #{projectID},
+            </if>
+            <if test="orderState != null and orderState != ''">
+                #{orderState},
+            </if>
+            <if test="orderPrice != null and orderPrice != ''">
+                #{orderPrice},
+            </if>
+            <if test="orderYear != null and orderYear != ''">
+                #{orderYear},
+            </if>
+            <if test="orderMonth != null and orderMonth != ''">
+                #{orderMonth},
+            </if>
+            <if test="orderDate != null and orderDate != ''">
+                #{orderDate},
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                #{yeZhuID},
+            </if>
+        </trim>
+    </insert>
+    <!--查询是否存再-->
+    <select id="selectOrderKey" parameterType="com.forest.communityproperty.entity.Forest_ordermanage" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        *
+        from forest_ordermanage
+        where orderYear=#{orderYear} and  orderMonth=#{orderMonth} and yeZhuID=#{yeZhuID} and orderDate=#{orderDate}
+    </select>
+
+    <!--支付成功-->
+    <update id="updateRegisterSelective"  parameterType="com.forest.communityproperty.entity.Forest_ordermanage">
+        <!--@mbg.generated-->
+        update forest_ordermanage
+        <set>
+            <if test="orderState != null and orderState != ''">
+                orderState = #{orderState},
+            </if>
+        </set>
+        where orderID = #{orderID}
+    </update>
+    <!--支付失败-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from forest_ordermanage
+        where orderID =#{orderID}
+    </delete>
+<!--总收益-->
+    <select id="selectSumOrderKey" resultType="java.util.Map">
+        <!--@mbg.generated-->
+        select sum(orderPrice) from forest_ordermanage
+    </select>
+    <!--总收益-->
+    <select id="selectsumOrderKey" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select orderPrice from forest_ordermanage order by orderDate desc
+    </select>
+</mapper>

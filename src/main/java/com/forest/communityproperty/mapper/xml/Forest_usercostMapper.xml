@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_usercostMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_usercost">
+        <!--@mbg.generated-->
+        <!--@Table forest_xitongyonghu-->
+        <id column="userCostId" property="userCostId"/>
+        <result column="userCostName" property="userCostName"/>
+        <result column="userCostYear" property="userCostYear"/>
+        <result column="userCostMonth" property="userCostMonth"/>
+        <result column="yeZhuID" property="yeZhuID"/>
+        <result column="projectID" property="projectID"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        userCostId,userCostName,userCostYear,userCostMonth,uc.yeZhuID,uc.projectID
+    </sql>
+    <!--增加费用信息 -->
+    <insert id="insertSelective" keyColumn="userCostId" keyProperty="userCostId" parameterType="com.forest.communityproperty.entity.Forest_usercost"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into forest_usercost
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userCostName != null and userCostName != ''">
+                userCostName,
+            </if>
+            <if test="userCostYear != null and userCostYear != ''">
+                userCostYear,
+            </if>
+            <if test="userCostMonth != null and userCostMonth != ''">
+                userCostMonth,
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                yeZhuID,
+            </if>
+            <if test="projectID != null and projectID != ''">
+                projectID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userCostName != null and userCostName != ''">
+                #{userCostName},
+            </if>
+            <if test="userCostYear != null and userCostYear != ''">
+                #{userCostYear},
+            </if>
+            <if test="userCostMonth != null and userCostMonth != ''">
+                #{userCostMonth},
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                #{yeZhuID},
+            </if>
+            <if test="projectID != null and projectID != ''">
+                #{projectID},
+            </if>
+        </trim>
+    </insert>
+    <!--查询是否存再-->
+    <select id="selectByPrimaryKey" parameterType="com.forest.communityproperty.entity.Forest_usercost" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+            *
+        from forest_usercost uc,forest_yezhumessage yz
+        where uc.yeZhuID=yz.yeZhuID and uc.userCostYear=#{userCostYear} and  uc.userCostMonth=#{userCostMonth} and uc.yeZhuID=#{yeZhuID} and uc.projectID=#{projectID}
+    </select>
+
+</mapper>

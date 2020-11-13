@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_carareaMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_cararea">
+        <!--@mbg.generated-->
+        <!--@Table Forest_cararea-->
+        <id column="carAreaID" property="carAreaID"/>
+        <result column="carID" property="carID"/>
+        <result column="typeID" property="typeID"/>
+        <result column="yeZhuID" property="yeZhuID"/>
+        <result column="areaTypeID" property="areaTypeID"/>
+        <result column="carDate" property="carDate"/>
+        <result column="recordStates" property="recordStates"/>
+        <result column="yeZhuName" property="yeZhuMessage.yeZhuName"/>
+        <result column="yeZhuSex" property="yeZhuMessage.yeZhuSex"/>
+        <result column="yeZhuPhone" property="yeZhuMessage.yeZhuPhone"/>
+        <result column="yeZhuID" property="yeZhuMessage.yeZhuID"/>
+        <result column="yeZhuSFZ" property="yeZhuMessage.yeZhuSFZ"/>
+        <result column="yeZhuEmail" property="yeZhuMessage.yeZhuEmail"/>
+        <result column="carImage" property="message.carImage"/>
+        <result column="carPlates" property="message.carPlates"/>
+        <result column="carStates" property="message.carStates"/>
+        <result column="catDate" property="message.catDate"/>
+        <result column="carBeiZhu" property="message.carBeiZhu"/>
+        <result column="cartTypeName" property="type.cartTypeName"/>
+        <result column="carTypeDate" property="type.carTypeDate"/>
+        <result column="carTypeBeiZhu" property="type.carTypeBeiZhu"/>
+        <result column="carAreaTypeName" property="areaType.carAreaTypeName"/>
+        <result column="carAreaTypeDate" property="areaType.carAreaTypeDate"/>
+        <result column="carAreaTypeID" property="areaType.carAreaTypeID"/>
+    </resultMap>
+
+    <!--查询车辆关联记录信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_cararea" resultMap="BaseResultMap">
+     SELECT * FROM forest_cararea ca , forest_yezhumessage yz ,forest_carmessage cm ,forest_cartype ct,forest_carareatype ty
+    where ca.carID=cm.carID and ca.typeID=ct.typeID and ca.yeZhuID=yz.yeZhuID  and ty.carAreaTypeID=ca.areaTypeID
+    order by ca.carDate desc
+    limit  #{num},#{size}
+    </select>
+    <!--统计数据-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_cararea
+    </select>
+    <!--查询车辆关联记录信息是否已被占用-->
+    <select id="selectCarSelective" parameterType="com.forest.communityproperty.entity.Forest_cararea" resultMap="BaseResultMap">
+     SELECT * FROM forest_cararea
+     where typeID=#{typeID} and areaTypeID=#{areaTypeID}
+    </select>
+    <!--新增车辆关联记录信息-->
+    <insert id="insertSelective" keyColumn="carAreaID" keyProperty="carAreaID"
+            parameterType="com.forest.communityproperty.entity.Forest_cararea"
+            useGeneratedKeys="true">
+        insert into forest_cararea
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="carID != null and carID != ''">
+                carID,
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                yeZhuID,
+            </if>
+            <if test="typeID != null and typeID != ''">
+                typeID,
+            </if>
+            <if test="areaTypeID != null and areaTypeID != ''">
+                areaTypeID,
+            </if>
+            <if test="carDate != null and carDate != ''">
+                carDate,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="carID != null and carID != ''">
+                #{carID},
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                #{yeZhuID},
+            </if>
+            <if test="typeID != null and typeID  != ''">
+                #{typeID},
+            </if>
+            <if test="areaTypeID != null and areaTypeID != ''">
+                #{areaTypeID},
+            </if>
+            <if test="carDate != null and carDate != ''">
+                #{carDate},
+            </if>
+        </trim>
+    </insert>
+    <!--查询业主编号-->
+    <select id="findSelectCountYeZhuID" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT yeZhuID
+        FROM forest_carareawhere WHERE carAreaID =#{carAreaID}
+    </select>
+    <!--删除关联数据-->
+    <delete id="deleteByPrimaryKey"  parameterType="java.lang.Integer">
+        delete
+        from forest_cararea
+        where carAreaID =#{carAreaID}
+    </delete>
+
+    <!--查询修改车辆关联记录信息-->
+    <select id="selectEmployees" parameterType="com.forest.communityproperty.entity.Forest_cararea" resultMap="BaseResultMap">
+    SELECT * FROM forest_cararea ca , forest_yezhumessage yz ,forest_carmessage cm ,forest_cartype ct,forest_carareatype ty
+    where ca.carID=cm.carID and ca.typeID=ct.typeID and ca.yeZhuID=yz.yeZhuID  and ty.carAreaTypeID=ca.areaTypeID
+    and ca.carAreaID=#{carAreaID} and ca.carID=#{carID}
+    order by ca.carDate desc
+    </select>
+    <!--修改车辆信息-->
+    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_cararea">
+        update forest_cararea
+        <set>
+            <if test="typeID != null and typeID != ''">
+                typeID = #{typeID},
+            </if>
+            <if test="areaTypeID != null and areaTypeID != ''">
+                areaTypeID = #{areaTypeID},
+            </if>
+            <if test="carDate != null and carDate != ''">
+                carDate = #{carDate},
+            </if>
+        </set>
+        where carAreaID = #{carAreaID}
+    </update>
+    <!--查询车辆关联记录信息 车位信息-->
+    <select id="carTypeEmployee" parameterType="com.forest.communityproperty.entity.Forest_cararea" resultMap="BaseResultMap">
+     SELECT * FROM forest_cararea ca , forest_yezhumessage yz ,forest_carmessage cm ,forest_cartype ct,forest_carareatype ty
+    where ca.carID=cm.carID and ca.typeID=ct.typeID and ca.yeZhuID=yz.yeZhuID  and ty.carAreaTypeID=ca.areaTypeID
+    order by ct.cartTypeName asc
+    limit  #{num},#{size}
+    </select>
+    <!--查询车辆关联记录信息 车位区域-->
+    <select id="carAreaTypeEmployee" parameterType="com.forest.communityproperty.entity.Forest_cararea" resultMap="BaseResultMap">
+     SELECT * FROM forest_cararea ca , forest_yezhumessage yz ,forest_carmessage cm ,forest_cartype ct,forest_carareatype ty
+    where ca.carID=cm.carID and ca.typeID=ct.typeID and ca.yeZhuID=yz.yeZhuID  and ty.carAreaTypeID=ca.areaTypeID
+    order by ty.carAreaTypeName asc
+    limit  #{num},#{size}
+    </select>
+    <!--查询车辆关联记录信息 车位区域-->
+    <select id="floorSelectByPrimaryKeysName" parameterType="com.forest.communityproperty.entity.Forest_cararea" resultMap="BaseResultMap">
+     SELECT * FROM forest_cararea ca , forest_yezhumessage yz ,forest_carmessage cm ,forest_cartype ct,forest_carareatype ty
+    where ca.carID=cm.carID and ca.typeID=ct.typeID and ca.yeZhuID=yz.yeZhuID  and ty.carAreaTypeID=ca.areaTypeID and yz.yeZhuName like "%"#{name}"%"
+    order by ca.carDate desc
+    limit  #{num},#{size}
+    </select>
+    <!--统计数据-->
+    <select id="findSelectCountEnter" resultType="java.lang.Integer" parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage">
+    SELECT count(*) FROM forest_cararea ca , forest_yezhumessage yz ,forest_carmessage cm ,forest_cartype ct,forest_carareatype ty
+    where ca.carID=cm.carID and ca.typeID=ct.typeID and ca.yeZhuID=yz.yeZhuID  and ty.carAreaTypeID=ca.areaTypeID and yz.yeZhuName like "%"#{name}"%"
+    </select>
+    <!--判断是否数据存在-->
+    <select id="findCountEnter" resultMap="BaseResultMap" parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage">
+    SELECT * FROM forest_cararea where carAreaID = #{carAreaID} and recordStates = #{recordStates}
+    </select>
+    <!--修改车辆信息 出去/回来-->
+    <update id="goComeEmployee"  parameterType="com.forest.communityproperty.entity.Forest_cararea">
+        update forest_cararea
+        <set>
+            <if test="recordStates != null and recordStates != ''">
+                recordStates = #{recordStates}
+            </if>
+        </set>
+        where carAreaID = #{carAreaID}
+    </update>
+</mapper>

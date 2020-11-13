@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_roommessageMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_roommessage">
+        <!--@mbg.generated-->
+        <!--@Table Forest_roommessage-->
+        <id column="floorID" property="floorID"/>
+        <result column="floorName" property="floorName"/>
+        <result column="floorDate" property="floorDate"/>
+        <result column="floorBeiZhu" property="floorBeiZhu"/>
+    </resultMap>
+
+    <!--查询楼房记录信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_roommessage" resultMap="BaseResultMap">
+     SELECT * FROM forest_roommessage order by floorName desc
+    </select>
+    <!--增加楼房记录信息 -->
+    <insert id="insertSelective" keyColumn="floorID" keyProperty="floorID" parameterType="com.forest.communityproperty.entity.Forest_roommessage"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into forest_roommessage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="floorName != null and floorName != ''">
+                floorName,
+            </if>
+            <if test="floorDate != null and floorDate != ''">
+                floorDate,
+            </if>
+            <if test="floorBeiZhu != null and floorBeiZhu != ''">
+                floorBeiZhu
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="floorName != null and floorName != ''">
+                #{floorName},
+            </if>
+            <if test="floorDate != null and floorDate != ''">
+                #{floorDate},
+            </if>
+            <if test="floorBeiZhu != null and floorBeiZhu != ''">
+                #{floorBeiZhu}
+            </if>
+        </trim>
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteByPrimaryKeys" parameterType="com.forest.communityproperty.entity.Forest_roommessage">
+        delete
+        from forest_roommessage
+        where floorID =#{floorID}
+    </delete>
+</mapper>

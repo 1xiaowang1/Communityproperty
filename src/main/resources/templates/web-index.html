@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>FOREST公司官方</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="css/dmaku.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
+    <script src="js/dmaku.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
+    <style type="text/css">
+        #sds {
+            width: 100%;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="dowebok" id="dowebok">
+
+
+    <div class="form-container sign-up-container" id="demo1">
+        <form>
+            <h1>注册</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>或使用邮箱注册</span>
+            <input type="text" id="yeZhuUserName" placeholder="姓名">
+            <input type="text" id="yeZhuSFZ" placeholder="身份证号">
+            <input type="email" id="yeZhuEmail" placeholder="电子邮箱">
+            <input type="password" id="yeZhuPassword" placeholder="密码">
+            <input type="text" id="yan" placeholder="验证码">
+            <button id="zhuCe">注册</button>
+        </form>
+    </div>
+
+
+    <div class="form-container sign-up-container" id="demo2">
+        <form>
+            <h1>忘记密码</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>或使用邮箱注册</span>
+            <input type="text" id="yeZhuUserName1" placeholder="姓名">
+            <input type="text" id="yeZhuSFZ1" placeholder="身份证号">
+            <input type="password" id="yeZhuPassword1" placeholder="请输入密码">
+            <input type="password" id="password" placeholder="再次输入密码">
+            <button id="bianJi">编辑</button>
+        </form>
+    </div>
+
+
+    <div class="form-container sign-in-container">
+        <form action="javascript:void(0);">
+            <h1>登录</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>或使用您的帐号</span>
+            <input type="email" id="yeZhuEmails" placeholder="电子邮箱">
+            <input type="password" id="yeZhuPasswords" placeholder="密码">
+            <button id="dengJi">登录</button>
+        </form>
+    </div>
+
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>已有帐号？</h1>
+                <p>请使用您的帐号进行登录</p>
+                <button class="ghost" id="signIn">登录</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>没有帐号？</h1>
+                <p>立即注册加入我们，和我们一起开始旅程吧</p>
+                <button class="ghost" id="signUp">注册</button>
+                <button class="ghost" id="signUps">忘记密码</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="yeZhuID"/>
+    <input type="hidden" id="emailNum"/>
+</div>
+<script src="js/dmaku.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
+
+</body>
+<script type="text/javascript">
+
+    $("#dengJi").click(function () {
+        var yeZhuEmail = $("#yeZhuEmails").val();
+        var yeZhuPassword = $("#yeZhuPasswords").val();
+        var data = {
+            "yeZhuEmail": yeZhuEmail,
+            "yeZhuPassword": yeZhuPassword
+        };
+        $.ajax({
+            url: "selectYeZhu",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            success: function (data) {
+                if (data.code == 200) {
+                    window.location.href = "http://localhost:8080/forest/web-login.html";
+                } else {
+                    window.location.href = "http://localhost:8080/forest/web-index.html";
+                }
+            }
+        });
+    });
+    $("#bianJi").click(function () {
+        var yeZhuUserName = $("#yeZhuUserName1").val();
+        var yeZhuSFZ = $("#yeZhuSFZ1").val();
+        var yeZhuPassword = $("#yeZhuPassword1").val();
+        var password = $("#password").val();
+        var data = {
+            "yeZhuUserName": yeZhuUserName,
+            "yeZhuSFZ": yeZhuSFZ,
+            "yeZhuPassword": yeZhuPassword
+        };
+        if (yeZhuPassword == password) {
+            $.ajax({
+                url: "updateYeZhu",
+                type: "POST",
+                dataType: "json",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(data),
+                success: function (data) {
+                    if (data.code == 200) {
+                        window.location.href = "http://localhost:8080/forest/web-index.html";
+                    } else if (data.code == 400) {
+                        Swal.fire("错误", "变更失败", "error")
+                    }
+                }
+            });
+        } else {
+            Swal.fire("提示", "两次密码输入不一致", "question");
+            $("#yeZhuPassword1").val("");
+            $("#password").val("");
+        }
+    });
+
+
+    $("#zhuCe").click(function () {
+        var yeZhuUserName = $("#yeZhuUserName").val();
+        var yeZhuSFZ = $("#yeZhuSFZ").val();
+        var yeZhuEmail = $("#yeZhuEmail").val();
+        var yeZhuPassword = $("#yeZhuPassword").val();
+        var yan = $("#yan").val();
+        var emailNum = $("#emailNum").val();
+        var data = {
+            "yeZhuUserName": yeZhuUserName,
+            "yeZhuSFZ": yeZhuSFZ,
+            "yeZhuEmail": yeZhuEmail,
+            "yeZhuPassword": yeZhuPassword,
+            "name": yan,
+            "emailNum": emailNum
+        };
+        $.ajax({
+            url: "registerYeZhu",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            success: function (data) {
+                if (data.code == 200) {
+                    Swal.fire("提示", "注册成功", "success");
+                    window.location.href = "http://localhost:8080/forest/web-index.html";
+                } else if (data.code == 400) {
+                    Swal.fire("错误", "注册失败", "error");
+                } else if (data.code == 500) {
+                    Swal.fire("错误", "验证码错误", "error");
+                    $("#yan").val("")
+                }
+            }
+        });
+    });
+
+    $("#yeZhuSFZ").blur(function () {
+        findUsrCredit();
+    });
+    $("#yeZhuEmail").blur(function () {
+        var yeZhuID = $("#yeZhuID").val();
+        var yeZhuEmail = $("#yeZhuEmail").val();
+        var data = {
+            "id": yeZhuID,
+            "cc": yeZhuEmail
+        };
+        $.ajax({
+            url: "goEmail",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            success: function (data) {
+                if (data.code == 200) {
+                    $("#emailNum").val(data.emailNum);
+                    $("#yeZhuEmail").attr("style", "display:none;");//隐藏div
+                    $("#yan").attr("style", "display:block;");//显示div
+                    $("#yeZhuSFZ").attr("style", "display:none;");//隐藏div
+                } else {
+                    $("#yeZhuSFZ").attr("style", "display:none;");//隐藏div
+                    $("#yan").attr("style", "display:none;");//隐藏div
+                    $("#yeZhuEmail").attr("style", "display:block;");//显示div
+                }
+            }
+        });
+    });
+
+    //获取系统用户的身份证
+    function findUsrCredit() {
+        var yeZhuSFZ = $("#yeZhuSFZ").val();        //身份证号
+        $.ajax({
+            url: "yeZhuFindUserCredit",
+            type: "POST",
+            data: {"yeZhuSFZ": yeZhuSFZ},
+            dataType: "json",
+            traditional: true,
+            success: function (data) {
+                if (data.code == 200) {
+                    Swal.fire("提示", "请先去找物业人员登记", "warning")
+                    $("#yeZhuSFZ").empty();
+                    $("#yeZhuEmail").attr("style", "display:none;");//隐藏div
+                    $("#yeZhuSFZ").attr("style", "display:block;");//显示div
+                    $("#yan").attr("style", "display:none;");//隐藏div
+                } else {
+                    $("#yeZhuID").val(data.yeZhuID);
+                    Swal.fire("提示", "身份证号输入正确", "question")
+                    $("#yeZhuSFZ").attr("style", "display:none;");//隐藏div
+                    $("#yan").attr("style", "display:none;");//隐藏div
+                    $("#yeZhuEmail").attr("style", "display:block;");//显示div
+                }
+            }
+        });
+    }
+
+    $(function () {
+        $("#yeZhuEmail").attr("style", "display:none;");//隐藏div
+        $("#yeZhuSFZ").attr("style", "display:block;");//显示div
+        $("#yan").attr("style", "display:none;");//隐藏div
+    });
+</script>
+</html>

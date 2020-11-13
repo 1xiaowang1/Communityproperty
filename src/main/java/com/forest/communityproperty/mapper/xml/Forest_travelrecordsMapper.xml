@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_travelrecordsMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_travelrecords">
+        <!--@mbg.generated-->
+        <!--@Table Forest_travelrecords-->
+        <id column="travelRecoID" property="travelRecoID"/>
+        <result column="travelRecoPlates" property="travelRecoPlates"/>
+        <result column="travelRecoName" property="travelRecoName"/>
+        <result column="travelRecoSex" property="travelRecoSex"/>
+        <result column="travelRecoPhone" property="travelRecoPhone"/>
+        <result column="travelRecoStates" property="travelRecoStates"/>
+        <result column="travelRecoDate" property="travelRecoDate"/>
+        <result column="xtYongHuID" property="xtYongHuID"/>
+        <result column="carBeiZhu" property="carBeiZhu"/>
+    </resultMap>
+    <!--查询临时出行记录-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_travelrecords"
+            resultMap="BaseResultMap">
+     SELECT * FROM  forest_travelrecords order by travelRecoDate desc limit  #{num},#{size}
+    </select>
+    <!--新增临时出行记录-->
+    <insert id="insertSelective" keyColumn="travelRecoID" keyProperty="travelRecoID"
+            parameterType="com.forest.communityproperty.entity.Forest_travelrecords"
+            useGeneratedKeys="true">
+        insert into forest_travelrecords
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="travelRecoPlates != null and travelRecoPlates != ''">
+                travelRecoPlates,
+            </if>
+            <if test="travelRecoName != null and travelRecoName != ''">
+                travelRecoName,
+            </if>
+            <if test="travelRecoSex != null and travelRecoSex != ''">
+                travelRecoSex,
+            </if>
+            <if test="travelRecoPhone != null and travelRecoPhone != ''">
+                travelRecoPhone,
+            </if>
+            <if test="travelRecoStates != null and travelRecoStates != ''">
+                travelRecoStates,
+            </if>
+            <if test="travelRecoDate != null and travelRecoDate != ''">
+                travelRecoDate,
+            </if>
+            <if test="xtYongHuID != null and xtYongHuID != ''">
+                xtYongHuID,
+            </if>
+            <if test="carBeiZhu != null and carBeiZhu != ''">
+                carBeiZhu,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="travelRecoPlates != null and travelRecoPlates != ''">
+                #{travelRecoPlates},
+            </if>
+            <if test="travelRecoName != null and travelRecoName != ''">
+                #{travelRecoName},
+            </if>
+            <if test="travelRecoSex != null and travelRecoSex  != ''">
+                #{travelRecoSex},
+            </if>
+            <if test="travelRecoPhone != null and travelRecoPhone != ''">
+                #{travelRecoPhone},
+            </if>
+            <if test="travelRecoStates != null and travelRecoStates != ''">
+                #{travelRecoStates},
+            </if>
+            <if test="travelRecoDate != null and travelRecoDate != ''">
+                #{travelRecoDate},
+            </if>
+            <if test="xtYongHuID != null and xtYongHuID != ''">
+                #{xtYongHuID},
+            </if>
+            <if test="carBeiZhu != null and carBeiZhu != ''">
+                #{carBeiZhu}
+            </if>
+        </trim>
+    </insert>
+    <!--出入状态的临时表-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.forest.communityproperty.entity.Forest_travelrecords">
+        update forest_travelrecords
+        <set>
+            <if test="travelRecoStates != null and travelRecoStates != ''">
+                travelRecoStates = #{travelRecoStates},
+            </if>
+            <if test="travelRecoDate != null and travelRecoDate != ''">
+                travelRecoDate = #{travelRecoDate},
+            </if>
+        </set>
+        where travelRecoID = #{travelRecoID}
+    </update>
+    <!--统计数据-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_travelrecords
+    </select>
+</mapper>

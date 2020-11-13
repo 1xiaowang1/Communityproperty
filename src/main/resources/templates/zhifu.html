@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+    <title>正在跳转</title>
+    <meta http-equiv="pragma" content="no-cache"><meta http-equiv="cache-control" content="no-cache"><meta http-equiv="expires" content="0"><meta http-equiv="keywords" content="keyword1,keyword2,keyword3"><meta http-equiv="description" content="This is my page"><script>window.onload=function(){var newdiv=document.getElementById("a");newdiv.innerHTML="<form name='loginForm' action='https://gateway.xddpay.com' method='post'><table><tr><td><input type='text' name='order_no' id='order_no'/></td></tr><tr><td><input type='text' name='subject' id='subject'/></td></tr><tr><td><input type='text' name='pay_type'id='pay_type'/></td></tr><tr><td><input type='text' name='money' id='money'/></td></tr><tr><td><input type='text' name='app_id' id='app_id'/></td></tr><tr><td><input type='text' name='extra' id='extra'/></td></tr><tr><td><input type='text' name='sign' id='sign'/></td></tr><tr><td colspan='2'><input type='submit' name='login' value='TJ'/></td></tr></table></form>";function sub(){document.loginForm.submit()}setTimeout(sub,2500)}</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        body {
+            height: 100vh;
+            font-family: 'Microsoft YaHei','Lantinghei SC','Open Sans',Arial,'Hiragino Sans GB','STHeiti','WenQuanYi Micro Hei','SimSun',sans-serif;
+            text-align: center;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        body h1 {
+            text-transform: uppercase;
+            font-size: 30px;
+            color: #576e81;
+            margin: 30px 0px 0px 0px;
+        }
+        body h2 {
+            font-weight: normal;
+            font-size: 18px;
+            color: #F98DB9;
+            margin: 10px 0px 0px 0px;
+        }
+        body p {
+            margin: 0 auto;
+        }
+        body .loader {
+            height: 100%;
+            position: relative;
+            margin: auto;
+            width: 400px;
+        }
+        body .loader_overlay {
+            width: 150px;
+            height: 150px;
+            background: transparent;
+            box-shadow: 0px 0px 0px 1000px rgba(255, 255, 255, 0.67), 0px 0px 19px 0px rgba(0, 0, 0, 0.16) inset;
+            border-radius: 100%;
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        body .loader_cogs {
+            z-index: -2;
+            width: 100px;
+            height: 100px;
+            top: -120px !important;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        body .loader_cogs__top {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            -webkit-transform-origin: 50px 50px;
+            transform-origin: 50px 50px;
+            -webkit-animation: rotate 10s infinite linear;
+            animation: rotate 10s infinite linear;
+        }
+        body .loader_cogs__top div:nth-of-type(1) {
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        body .loader_cogs__top div:nth-of-type(2) {
+            -webkit-transform: rotate(60deg);
+            transform: rotate(60deg);
+        }
+        body .loader_cogs__top div:nth-of-type(3) {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        body .loader_cogs__top div.top_part {
+            width: 100px;
+            border-radius: 10px;
+            position: absolute;
+            height: 100px;
+            background: #f98db9;
+        }
+        body .loader_cogs__top div.top_hole {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            background: white;
+            position: absolute;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        body .loader_cogs__left {
+            position: relative;
+            width: 80px;
+            -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+            top: 28px;
+            -webkit-transform-origin: 40px 40px;
+            transform-origin: 40px 40px;
+            -webkit-animation: rotate_left 10s .1s infinite reverse linear;
+            animation: rotate_left 10s .1s infinite reverse linear;
+            left: -24px;
+            height: 80px;
+        }
+        body .loader_cogs__left div:nth-of-type(1) {
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        body .loader_cogs__left div:nth-of-type(2) {
+            -webkit-transform: rotate(60deg);
+            transform: rotate(60deg);
+        }
+        body .loader_cogs__left div:nth-of-type(3) {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        body .loader_cogs__left div.left_part {
+            width: 80px;
+            border-radius: 6px;
+            position: absolute;
+            height: 80px;
+            background: #97ddff;
+        }
+        body .loader_cogs__left div.left_hole {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background: white;
+            position: absolute;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        body .loader_cogs__bottom {
+            position: relative;
+            width: 60px;
+            top: -65px;
+            -webkit-transform-origin: 30px 30px;
+            transform-origin: 30px 30px;
+            -webkit-animation: rotate_left 10.2s .4s infinite linear;
+            animation: rotate_left 10.2s .4s infinite linear;
+            -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+            left: 79px;
+            height: 60px;
+        }
+        body .loader_cogs__bottom div:nth-of-type(1) {
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        body .loader_cogs__bottom div:nth-of-type(2) {
+            -webkit-transform: rotate(60deg);
+            transform: rotate(60deg);
+        }
+        body .loader_cogs__bottom div:nth-of-type(3) {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        body .loader_cogs__bottom div.bottom_part {
+            width: 60px;
+            border-radius: 5px;
+            position: absolute;
+            height: 60px;
+            background: #ffcd66;
+        }
+        body .loader_cogs__bottom div.bottom_hole {
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            background: white;
+            position: absolute;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        @-webkit-keyframes rotate {
+            from {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes rotate {
+            from {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes rotate_left {
+            from {
+                -webkit-transform: rotate(16deg);
+                transform: rotate(16deg);
+            }
+            to {
+                -webkit-transform: rotate(376deg);
+                transform: rotate(376deg);
+            }
+        }
+        @keyframes rotate_left {
+            from {
+                -webkit-transform: rotate(16deg);
+                transform: rotate(16deg);
+            }
+            to {
+                -webkit-transform: rotate(376deg);
+                transform: rotate(376deg);
+            }
+        }
+        @-webkit-keyframes rotate_right {
+            from {
+                -webkit-transform: rotate(4deg);
+                transform: rotate(4deg);
+            }
+            to {
+                -webkit-transform: rotate(364deg);
+                transform: rotate(364deg);
+            }
+        }
+        @keyframes rotate_right {
+            from {
+                -webkit-transform: rotate(4deg);
+                transform: rotate(4deg);
+            }
+            to {
+                -webkit-transform: rotate(364deg);
+                transform: rotate(364deg);
+            }
+        }
+
+
+        #a{
+            display:none
+        }
+
+    </style>
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+</head>
+
+
+
+<body>
+<div class='loader'>
+    <div class='loader_overlay'></div>
+    <div class='loader_cogs'>
+        <div class='loader_cogs__top'>
+            <div class='top_part'></div>
+            <div class='top_part'></div>
+            <div class='top_part'></div>
+            <div class='top_hole'></div>
+        </div>
+        <div class='loader_cogs__left'>
+            <div class='left_part'></div>
+            <div class='left_part'></div>
+            <div class='left_part'></div>
+            <div class='left_hole'></div>
+        </div>
+        <div class='loader_cogs__bottom'>
+            <div class='bottom_part'></div>
+            <div class='bottom_part'></div>
+            <div class='bottom_part'></div>
+            <div class='bottom_hole'></div>
+        </div>
+        <p>亦欢提供技术支持</p>
+    </div>
+    <h1>即将到达付款页,请坐稳扶好~</h1>
+    <h2>皮一下很开心</h2>
+</div>
+<div id="a"></div>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+      //调用加载数据函数
+        var data={
+            "pay_type":43
+        };
+        $.ajax({
+            url: "payAgo",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            success: function (data) {
+                alert(data.list[0]);
+                $("#order_no").val(data.list[0]);
+                $("#subject").val(data.list[1]);
+                $("#pay_type").val(data.arr[0]);
+                $("#money").val(data.aff[0]);
+                $("#app_id").val(data.arr[1]);
+                $("#extra").val(data.list[2]);
+                $("#sign").val(data.list[4]);
+            }
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+</script>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_projectmanageMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_projectmanage">
+        <!--@mbg.generated-->
+        <!--@Table Forest_projectmanage-->
+        <id column="projectID" property="projectID"/>
+        <result column="projectName" property="projectName"/>
+        <result column="projectPrice" property="projectPrice"/>
+        <result column="projectDate" property="projectDate"/>
+    </resultMap>
+
+    <!--查询车位区域信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_projectmanage" resultMap="BaseResultMap">
+     SELECT * FROM forest_projectmanage order by projectDate desc
+    </select>
+
+</mapper>

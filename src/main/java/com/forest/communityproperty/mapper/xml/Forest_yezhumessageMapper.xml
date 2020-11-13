@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_yezhumessageMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_yezhumessage">
+        <!--@mbg.generated-->
+        <!--@Table forest_xitongyonghu-->
+        <id column="yeZhuID" property="yeZhuID"/>
+        <result column="yeZhuName" property="yeZhuName"/>
+        <result column="yeZhuSex" property="yeZhuSex"/>
+        <result column="yeZhuPhone" property="yeZhuPhone"/>
+        <result column="yeZhuSFZ" property="yeZhuSFZ"/>
+        <result column="yeZhuEmail" property="yeZhuEmail"/>
+        <result column="yeZhuPassword" property="yeZhuPassword"/>
+        <result column="yeZhuTime" property="yeZhuTime"/>
+        <result column="yeZhuUserName" property="yeZhuUserName"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        yeZhuID,yeZhuName,yeZhuSex,yeZhuPhone,yeZhuSFZ,yeZhuEmail,yeZhuPassword,yeZhuTime,yeZhuUserName
+    </sql>
+    <!--增加业主信息  业务人员-->
+    <insert id="insertSelective" keyColumn="yeZhuID" keyProperty="yeZhuID" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into forest_yezhumessage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="yeZhuName != null and yeZhuName != ''">
+                yeZhuName,
+            </if>
+            <if test="yeZhuSex != null and yeZhuSex != ''">
+                yeZhuSex,
+            </if>
+            <if test="yeZhuPhone != null and yeZhuPhone != ''">
+                yeZhuPhone,
+            </if>
+            <if test="yeZhuSFZ != null and yeZhuSFZ != ''">
+                yeZhuSFZ,
+            </if>
+            <if test="yeZhuEmail != null and yeZhuEmail != ''">
+                yeZhuEmail,
+            </if>
+            <if test="yeZhuPassword == null and yeZhuPassword == ''">
+                yeZhuPassword,
+            </if>
+            <if test="yeZhuTime != null and yeZhuTime != ''">
+                yeZhuTime
+            </if>
+            <if test="yeZhuUserName == null and yeZhuUserName==''">
+                yeZhuUserName
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="yeZhuName != null and yeZhuName != ''">
+                #{yeZhuName},
+            </if>
+            <if test="yeZhuSex != null and yeZhuSex != ''">
+                #{yeZhuSex},
+            </if>
+            <if test="yeZhuPhone != null and yeZhuPhone != ''">
+                #{yeZhuPhone},
+            </if>
+            <if test="yeZhuSFZ != null and yeZhuSFZ != ''">
+                #{yeZhuSFZ},
+            </if>
+            <if test="yeZhuEmail != null and yeZhuEmail != ''">
+                #{yeZhuEmail},
+            </if>
+            <if test="yeZhuPassword == null and yeZhuPassword == ''">
+                #{yeZhuPassword},
+            </if>
+            <if test="yeZhuTime != null and yeZhuTime != ''">
+                #{yeZhuTime},
+            </if>
+            <if test="yeZhuUserName == null and yeZhuUserName == ''">
+                #yeZhuUserName
+            </if>
+        </trim>
+    </insert>
+    <!--统计数据-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_yezhumessage
+    </select>
+    <!--分页查询-->
+    <select id="selectByPrimaryKeys" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM forest_yezhumessage ORDER BY yeZhuTime desc
+        limit #{num},#{size}
+    </select>
+    <!--删除-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from forest_yezhumessage
+        where yeZhuID =#{yeZhuID}
+    </delete>
+    <!--根据业主身份证检测是否存在-->
+    <select id="findUserCredit"  resultType="java.lang.String">
+        SELECT yeZhuID
+        FROM forest_yezhumessage
+        WHERE yeZhuSFZ=#{yeZhuSFZ}
+    </select>
+    <!--根据业主注册id检测是否存在-->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from forest_yezhumessage
+        where yeZhuID = #{yeZhuID}
+    </select>
+
+    <!--修改业主信息  业务人员-->
+    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_yezhumessage">
+        <!--@mbg.generated-->
+        update forest_yezhumessage
+        <set>
+            <if test="yeZhuName != null and yeZhuName != ''">
+                yeZhuName = #{yeZhuName},
+            </if>
+            <if test="yeZhuSex != null and yeZhuSex != ''">
+                yeZhuSex = #{yeZhuSex},
+            </if>
+            <if test="yeZhuPhone != null and yeZhuPhone != ''">
+                yeZhuPhone = #{yeZhuPhone},
+            </if>
+            <if test="yeZhuEmail != null and yeZhuEmail != ''">
+                yeZhuEmail = #{yeZhuEmail},
+            </if>
+            <if test="yeZhuTime != null and yeZhuTime != ''">
+                yeZhuTime = #{yeZhuTime},
+            </if>
+        </set>
+        where yeZhuSFZ = #{yeZhuSFZ}
+    </update>
+
+
+
+    <!--统计数据查询-->
+    <select id="findSelectCountName" resultType="java.lang.Integer">
+        SELECT count(*)  FROM forest_yezhumessage where yeZhuName like "%"#{yeZhuName}"%"
+    </select>
+
+    <!--分页查询 姓名-->
+    <select id="selectByPrimaryKeysName" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM forest_yezhumessage where yeZhuName like "%"#{yeZhuName}"%" ORDER BY yeZhuTime desc
+        limit #{num},#{size}
+    </select>
+
+    <!--根据业主身份证检测是否存在-->
+    <select id="findYeZhuCredit"  resultType="java.lang.Integer">
+        SELECT yeZhuID
+        FROM forest_yezhumessage
+        WHERE yeZhuSFZ=#{yeZhuSFZ}
+    </select>
+
+
+    <!--修改业主信息  业务人员-->
+    <update id="updateRegisterSelective"  parameterType="com.forest.communityproperty.entity.Forest_yezhumessage">
+        <!--@mbg.generated-->
+        update forest_yezhumessage
+        <set>
+            <if test="yeZhuPassword != null and yeZhuPassword != ''">
+                yeZhuPassword = #{yeZhuPassword},
+            </if>
+            <if test="yeZhuUserName != null and yeZhuUserName != ''">
+                yeZhuUserName = #{yeZhuUserName},
+            </if>
+        </set>
+        where yeZhuSFZ = #{yeZhuSFZ}
+    </update>
+
+    <!--根据业主账号和密码-->
+    <select id="findYeZhuUserName"  parameterType="com.forest.communityproperty.entity.Forest_yezhumessage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM forest_yezhumessage
+        WHERE yeZhuPassword=#{yeZhuPassword} and yeZhuEmail=#{yeZhuEmail}
+    </select>
+
+</mapper>

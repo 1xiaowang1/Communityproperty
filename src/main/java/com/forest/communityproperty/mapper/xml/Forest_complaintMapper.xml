@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_complaintMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_complaint">
+        <!--@mbg.generated-->
+        <!--@Table Forest_complaint-->
+        <id column="comID" property="comID"/>
+        <result column="yeZhuID" property="yeZhuID"/>
+        <result column="comTitle" property="comTitle"/>
+        <result column="comContent" property="comContent"/>
+        <result column="comMatter" property="comMatter"/>
+        <result column="comState" property="comState"/>
+        <result column="comDate" property="comDate"/>
+        <result column="yeZhuName" property="message.yeZhuName"/>
+        <result column="yeZhuSex" property="message.yeZhuSex"/>
+        <result column="yeZhuPhone" property="message.yeZhuPhone"/>
+        <result column="yeZhuID" property="message.yeZhuID"/>
+        <result column="yeZhuSFZ" property="message.yeZhuSFZ"/>
+        <result column="yeZhuEmail" property="message.yeZhuEmail"/>
+    </resultMap>
+    <!--新增投诉信息-->
+    <insert id="insertComplaint" keyColumn="comID" keyProperty="comID"
+            parameterType="com.forest.communityproperty.entity.Forest_complaint"
+            useGeneratedKeys="true">
+        insert into forest_complaint
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="yeZhuID != null and yeZhuID != ''">
+                yeZhuID,
+            </if>
+            <if test="comTitle != null and comTitle != ''">
+                comTitle,
+            </if>
+            <if test="comContent != null and comContent != ''">
+                comContent,
+            </if>
+            <if test="comMatter != null and comMatter != ''">
+                comMatter,
+            </if>
+            <if test="comState != null and comState != ''">
+                comState,
+            </if>
+            <if test="comDate != null and comDate != ''">
+                comDate,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="yeZhuID != null and yeZhuID != ''">
+                #{yeZhuID},
+            </if>
+            <if test="comTitle != null and comTitle != ''">
+                #{comTitle},
+            </if>
+            <if test="comContent != null and comContent  != ''">
+                #{comContent},
+            </if>
+            <if test="comMatter != null and comMatter != ''">
+                #{comMatter},
+            </if>
+            <if test="comState != null and comState != ''">
+                #{comState},
+            </if>
+            <if test="comDate != null and comDate != ''">
+                #{comDate},
+            </if>
+        </trim>
+    </insert>
+
+    <!--    查询投诉的信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_complaint"
+            resultMap="BaseResultMap">
+     SELECT * FROM forest_complaint co , forest_yezhumessage yz
+     where co.yeZhuID=yz.yeZhuID
+     order by co.comDate asc
+     limit  #{num},#{size}
+    </select>
+    <!--统计投诉信息-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_complaint
+    </select>
+    <!--    更改数据状态-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.forest.communityproperty.entity.Forest_complaint">
+        update forest_complaint
+        <set>
+            <if test="comDate != null and comDate != ''">
+                comDate = #{comDate},
+            </if>
+            <if test="comState != null and comState != ''">
+                comState = #{comState},
+            </if>
+        </set>
+        where comID = #{comID}
+    </update>
+
+    <!--    查询投诉的信息 姓名-->
+    <select id="userEmployeeComplaint" parameterType="com.forest.communityproperty.entity.Forest_complaint"
+            resultMap="BaseResultMap">
+     SELECT * FROM forest_complaint co , forest_yezhumessage yz
+     where co.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
+     order by co.comDate asc
+     limit  #{num},#{size}
+    </select>
+    <!--统计投诉信息  姓名-->
+    <select id="findUserCountComplaint" parameterType="com.forest.communityproperty.entity.Forest_complaint" resultType="java.lang.Integer">
+        SELECT count(*) FROM forest_complaint co , forest_yezhumessage yz
+     where co.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
+    </select>
+
+</mapper>

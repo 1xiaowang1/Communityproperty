@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_roomnamemessageMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_roomnamemessage">
+        <id column="roomNameID" property="roomNameID"/>
+        <result column="yeZhuID" property="yeZhuID"/>
+        <result column="floorID" property="floorID"/>
+        <result column="roomID" property="roomID"/>
+        <result column="roomState" property="roomState"/>
+        <result column="roomNameDate" property="roomNameDate"/>
+        <result column="yeZhuName" property="message.yeZhuName"/>
+        <result column="yeZhuSex" property="message.yeZhuSex"/>
+        <result column="yeZhuPhone" property="message.yeZhuPhone"/>
+        <result column="yeZhuID" property="message.yeZhuID"/>
+        <result column="yeZhuSFZ" property="message.yeZhuSFZ"/>
+        <result column="yeZhuEmail" property="message.yeZhuEmail"/>
+        <result column="floorName" property="floor.floorName"/>
+        <result column="floorID" property="floor.floorID"/>
+        <result column="roomName" property="room.roomName"/>
+        <result column="roomID" property="room.roomID"/>
+    </resultMap>
+
+    <!--查询楼房信息-->
+    <select id="selectEmployee" resultMap="BaseResultMap">
+    SELECT * FROM Forest_yezhumessage m,Forest_roomname r,Forest_roommessage f,forest_roomnamemessage s
+     where  m.yeZhuID=s.yeZhuID and r.roomID=s.roomID and f.floorID=s.floorID ORDER BY s.roomNameDate desc
+    limit  #{num},#{size}
+   </select>
+    <!--统计数据-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_roomnamemessage
+    </select>
+    <!--按id查询数据-->
+    <select id="findSelectCountID" parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage" resultMap="BaseResultMap">
+        SELECT * FROM forest_roomnamemessage  where roomNameID = #{roomNameID}
+    </select>
+    <!--删除房间数据-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from forest_roomnamemessage
+        where roomNameID =#{roomNameID}
+    </delete>
+    <!--新增关联信息-->
+    <insert id="insertSelective" keyColumn="roomNameID" keyProperty="roomNameID"
+            parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage"
+            useGeneratedKeys="true">
+        insert into forest_roomnamemessage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roomNameID != null and roomNameID != ''">
+                roomNameID,
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                yeZhuID,
+            </if>
+            <if test="roomID != null and roomID != ''">
+                roomID,
+            </if>
+            <if test="floorID != null and floorID != ''">
+                floorID,
+            </if>
+            <if test="roomNameDate != null and roomNameDate != ''">
+                roomNameDate,
+            </if>
+            <if test="roomState != null and roomState != ''">
+                roomState
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roomNameID != null and roomNameID != ''">
+                #{roomNameID},
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                #{yeZhuID},
+            </if>
+            <if test="roomID != null and roomID != ''">
+                #{roomID},
+            </if>
+            <if test="floorID != null and floorID != ''">
+                #{floorID},
+            </if>
+            <if test="roomNameDate != null and roomNameDate != ''">
+                #{roomNameDate},
+            </if>
+            <if test="roomState != null and roomState != ''">
+                #{roomState}
+            </if>
+        </trim>
+    </insert>
+    <!-- 通过楼房和房间进行查询是否存在-->
+    <select id="selectByPrimaryKeys"  parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage" resultMap="BaseResultMap">
+        SELECT * FROM forest_roomnamemessage
+        where   roomID=#{ roomID} and  floorID=#{ floorID}
+   </select>
+    <!-- 通过关联id来查询对应信息-->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT * FROM Forest_yezhumessage m,Forest_roomname r,Forest_roommessage f,forest_roomnamemessage s
+     where  m.yeZhuID=s.yeZhuID and r.roomID=s.roomID and f.floorID=s.floorID and  roomNameID=#{ roomNameID}
+   </select>
+    <!--修改信息-->
+    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage">
+        update forest_roomnamemessage
+        <set>
+            <if test="roomID != null and roomID != ''">
+                roomID = #{roomID},
+            </if>
+            <if test="floorID != null and floorID != ''">
+                floorID = #{floorID},
+            </if>
+            <if test="roomNameDate != null and roomNameDate != ''">
+                roomNameDate = #{roomNameDate},
+            </if>
+            <if test="roomState != null and roomState != ''">
+                roomState = #{roomState}
+            </if>
+        </set>
+        where roomNameID = #{roomNameID}
+    </update>
+    <!--查询楼房信息(排序)-->
+    <select id="selectEmploy" resultMap="BaseResultMap">
+    SELECT * FROM Forest_yezhumessage m,Forest_roomname r,Forest_roommessage f,forest_roomnamemessage s
+     where  m.yeZhuID=s.yeZhuID and r.roomID=s.roomID and f.floorID=s.floorID ORDER BY f.floorName desc
+    limit  #{num},#{size}
+   </select>
+    <!--查询房间信息(排序)-->
+    <select id="floorSelectRoom" resultMap="BaseResultMap">
+    SELECT * FROM Forest_yezhumessage m,Forest_roomname r,Forest_roommessage f,forest_roomnamemessage s
+     where  m.yeZhuID=s.yeZhuID and r.roomID=s.roomID and f.floorID=s.floorID ORDER BY r.roomName desc
+    limit  #{num},#{size}
+   </select>
+    <!--查询房间名称(排序)-->
+    <select id="selectByPrimaryKeysName" parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage" resultMap="BaseResultMap">
+        SELECT * FROM Forest_yezhumessage m,Forest_roomname r,Forest_roommessage f,forest_roomnamemessage s
+        where  m.yeZhuID=s.yeZhuID and r.roomID=s.roomID and f.floorID=s.floorID and m.yeZhuName like "%"#{name}"%" ORDER BY s.roomNameDate desc
+        limit  #{num},#{size}
+    </select>
+    <!--统计数据-->
+    <select id="findSelectCountEnter" resultType="java.lang.Integer" parameterType="com.forest.communityproperty.entity.Forest_roomnamemessage">
+         SELECT count(*) FROM Forest_yezhumessage m,Forest_roomname r,Forest_roommessage f,forest_roomnamemessage s
+         where  m.yeZhuID=s.yeZhuID and r.roomID=s.roomID and f.floorID=s.floorID and m.yeZhuName like "%"#{name}"%"
+    </select>
+</mapper>

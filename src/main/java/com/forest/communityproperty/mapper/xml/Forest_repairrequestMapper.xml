@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forest.communityproperty.mapper.Forest_repairrequestMapper">
+    <resultMap id="BaseResultMap" type="com.forest.communityproperty.entity.Forest_repairrequest">
+        <!--@mbg.generated-->
+        <!--@Table Forest_cararea-->
+        <id column="repairID" property="repairID"/>
+        <result column="repairImage" property="repairImage"/>
+        <result column="yeZhuID" property="yeZhuID"/>
+        <result column="shenQingShiJian" property="shenQingShiJian"/>
+        <result column="repairMessage" property="repairMessage"/>
+        <result column="repairState" property="repairState"/>
+        <result column="repairDetail" property="repairDetail"/>
+        <result column="yeZhuName" property="message.yeZhuName"/>
+        <result column="yeZhuSex" property="message.yeZhuSex"/>
+        <result column="yeZhuPhone" property="message.yeZhuPhone"/>
+        <result column="yeZhuID" property="message.yeZhuID"/>
+        <result column="yeZhuSFZ" property="message.yeZhuSFZ"/>
+        <result column="yeZhuEmail" property="message.yeZhuEmail"/>
+    </resultMap>
+
+    <!--查询维修信息-->
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest" resultMap="BaseResultMap">
+     SELECT * FROM forest_repairrequest re , forest_yezhumessage yz
+    where re.yeZhuID=yz.yeZhuID
+    order by re.repairState asc
+    limit  #{num},#{size}
+    </select>
+    <!--统计数据-->
+    <select id="findSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_repairrequest
+    </select>
+    <!--新增信息-->
+    <insert id="insertSelective" keyColumn="repairID" keyProperty="repairID"
+            parameterType="com.forest.communityproperty.entity.Forest_repairrequest"
+            useGeneratedKeys="true">
+        insert into forest_repairrequest
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="repairImage != null and repairImage != ''">
+                repairImage,
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                yeZhuID,
+            </if>
+            <if test="shenQingShiJian != null and shenQingShiJian != ''">
+                shenQingShiJian,
+            </if>
+            <if test="repairMessage != null and repairMessage != ''">
+                repairMessage,
+            </if>
+            <if test="repairState != null and repairState != ''">
+                repairState,
+            </if>
+            <if test="repairDetail != null and repairDetail != ''">
+                repairDetail,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="repairImage != null and repairImage != ''">
+                #{repairImage},
+            </if>
+            <if test="yeZhuID != null and yeZhuID != ''">
+                #{yeZhuID},
+            </if>
+            <if test="shenQingShiJian != null and shenQingShiJian  != ''">
+                #{shenQingShiJian},
+            </if>
+            <if test="repairMessage != null and repairMessage != ''">
+                #{repairMessage},
+            </if>
+            <if test="repairState != null and repairState != ''">
+                #{repairState},
+            </if>
+            <if test="repairDetail != null and repairDetail != ''">
+                #{repairDetail},
+            </if>
+        </trim>
+    </insert>
+    <!--修改维修状态-->
+    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_repairrequest">
+        update forest_repairrequest
+        <set>
+            <if test="shenQingShiJian != null and shenQingShiJian != ''">
+                shenQingShiJian = #{shenQingShiJian},
+            </if>
+            <if test="repairState != null and repairState != ''">
+                repairState = #{repairState},
+            </if>
+        </set>
+        where repairID = #{repairID}
+    </update>
+
+    <!--查询维修信息-->
+    <select id="selectRepairEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest" resultMap="BaseResultMap">
+     SELECT * FROM forest_repairrequest re , forest_yezhumessage yz
+    where re.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
+    order by re.repairState asc
+    limit  #{num},#{size}
+    </select>
+    <!--统计数据-->
+    <select id="findRepairSelectCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM forest_repairrequest
+    </select>
+
+    <!--修改维修状态-->
+    <update id="updateSelective"  parameterType="com.forest.communityproperty.entity.Forest_repairrequest">
+        update forest_repairrequest
+        <set>
+            <if test="shenQingShiJian != null and shenQingShiJian != ''">
+                shenQingShiJian = #{shenQingShiJian},
+            </if>
+            <if test="repairMessage != null and repairMessage != ''">
+                repairMessage = #{repairMessage},
+            </if>
+            <if test="repairDetail != null and repairDetail != ''">
+                repairDetail = #{repairDetail},
+            </if>
+        </set>
+        where repairID = #{repairID}
+    </update>
+    <!--查询维修信息-->
+    <select id="selectsEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest" resultMap="BaseResultMap">
+     SELECT * FROM forest_repairrequest
+     where repairState = #{repairState} and yeZhuID=#{yeZhuID} and repairImage=#{repairImage} and shenQingShiJian = #{shenQingShiJian}
+    </select>
+</mapper>
