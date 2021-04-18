@@ -7,7 +7,7 @@ public class Forest_ordermanage {
     /**
      * 收费单ID
      * 收费项ID
-     * 	收费状态（
+     * 收费状态（
      * 1、已收费
      * 2、未收费
      * ）

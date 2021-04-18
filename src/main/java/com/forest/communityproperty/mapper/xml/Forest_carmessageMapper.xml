@@ -10,8 +10,9 @@
         <result column="carBeiZhu" property="carBeiZhu"/>
     </resultMap>
     <!--查询车辆信息-->
-    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_carmessage" resultMap="BaseResultMap">
-     SELECT * FROM forest_carmessage order by catDate desc
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_carmessage"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_carmessage order by catDate desc
     </select>
     <!--新增车辆信息-->
     <insert id="insertSelective" keyColumn="carID" keyProperty="carID"
@@ -56,7 +57,7 @@
 
 
     <!--上传图片-->
-    <update id="updateByPrimaryImage"  parameterType="com.forest.communityproperty.entity.Forest_carmessage">
+    <update id="updateByPrimaryImage" parameterType="com.forest.communityproperty.entity.Forest_carmessage">
         update forest_carmessage
         <set>
             <if test="carImage != null and carImage != ''">
@@ -68,14 +69,14 @@
 
 
     <!--删除关联数据-->
-    <delete id="deleteByPrimaryKey"  parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete
         from forest_carmessage
         where carID =#{carID}
     </delete>
 
     <!--修改车辆信息-->
-    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_carmessage">
+    <update id="updateByPrimaryKeySelective" parameterType="com.forest.communityproperty.entity.Forest_carmessage">
         update forest_carmessage
         <set>
             <if test="carPlates != null and carPlates != ''">
@@ -90,8 +91,6 @@
         </set>
         where carID = #{carID}
     </update>
-
-
 
 
 </mapper>

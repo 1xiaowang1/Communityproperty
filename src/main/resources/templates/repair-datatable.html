@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
+    <link rel="stylesheet" href="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.css">
+    <script src="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.js"></script>
     <!-- third party css -->
     <link href="libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <link href="libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <link href="libs/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <link href="libs/datatables/select.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
-
+    <script src="js/username.js"></script>
     <!-- App css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/icons.min.css" rel="stylesheet" type="text/css"/>
@@ -628,8 +628,6 @@
     <script src="js/pop.js"></script>
     <div id="container"></div>
 </body>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
 
 <script type="text/javascript">
 
@@ -647,7 +645,7 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 500) {
-                    window.location.href = "http://localhost:8080/forest/pages-login.html";
+                    window.location.href = userUrl + "/pages-login.html";
                 } else {
                     var str1 = null;
                     for (var i = 0; i < data.num; i++) {
@@ -710,7 +708,7 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 500) {
-                    window.location.href = "http://localhost:8080/forest/pages-login.html";
+                    window.location.href = userUrl + "/pages-login.html";
                 } else {
                     var str1 = null;
                     for (var i = 0; i < data.num; i++) {
@@ -762,13 +760,13 @@
     $("#selected").blur(function () {
         loadstu();
     });
+
     //修改正在处理
-    function updateAgo(yeZhuID,repairID)
-    {
-        var data={
-            "yeZhuID":yeZhuID,
-            "repairID":repairID,
-            "repairState":2
+    function updateAgo(yeZhuID, repairID) {
+        var data = {
+            "yeZhuID": yeZhuID,
+            "repairID": repairID,
+            "repairState": 2
         };
         $.ajax({
             url: "repairUpdatePrimarySelective",
@@ -788,12 +786,11 @@
     }
 
     //修改处理完成
-    function updateAfter(yeZhuID,repairID)
-    {
-        var data={
-            "yeZhuID":yeZhuID,
-            "repairID":repairID,
-            "repairState":3
+    function updateAfter(yeZhuID, repairID) {
+        var data = {
+            "yeZhuID": yeZhuID,
+            "repairID": repairID,
+            "repairState": 3
         };
         $.ajax({
             url: "repairUpdatePrimarySelective",
@@ -832,7 +829,7 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 500) {
-                    window.location.href = "http://localhost:8080/forest/pages-login.html";
+                    window.location.href = userUrl + "/pages-login.html";
                 } else {
                     var str1 = null;
                     for (var i = 0; i < data.num; i++) {
@@ -893,7 +890,7 @@
             dataType: "json",
             contentType: 'application/json;charset=utf-8',
             success: function (data) {
-                window.location.href = "http://localhost:8080/forest/pages-login.html";
+                window.location.href = userUrl + "/pages-login.html";
             }
         });
     }
@@ -913,7 +910,7 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 500) {
-                    window.location.href = "http://localhost:8080/forest/pages-login.html";
+                    window.location.href = userUrl + "/pages-login.html";
                 } else {
                     var str1 = null;
                     for (var i = 0; i < data.num; i++) {

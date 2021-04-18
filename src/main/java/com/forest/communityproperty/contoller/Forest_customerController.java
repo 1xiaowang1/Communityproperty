@@ -15,9 +15,10 @@ import java.util.Map;
  */
 @RestController
 public class Forest_customerController {
-    private Map<String,Object> map= new HashMap<>();
+    private Map<String, Object> map = new HashMap<>();
+
     @RequestMapping("customer")
-    public Map<String, Object> customer(@RequestBody Forest_yezhumessage model, HttpServletRequest request){
+    public Map<String, Object> customer(@RequestBody Forest_yezhumessage model, HttpServletRequest request) {
         //判断用户是否存在登录了
         if (new Forest_variable().variableNameSession(request) == 500) {
             //状态码  500错误
@@ -28,13 +29,14 @@ public class Forest_customerController {
         map.put("name", new Forest_variable().sessionName(request));
         //使用map存储数据
         //提示信息
-        map.put("code",200);
+        map.put("code", 200);
 
         return map;
 
     }
+
     @RequestMapping("webCustomer")
-    public Map<String, Object> webCustomer(@RequestBody Forest_yezhumessage model, HttpServletRequest request){
+    public Map<String, Object> webCustomer(@RequestBody Forest_yezhumessage model, HttpServletRequest request) {
         //判断用户是否存在登录了
         if (new Forest_variable().variableYeZhuNameSession(request) == 500) {
             //状态码  500错误
@@ -45,7 +47,7 @@ public class Forest_customerController {
         map.put("name", new Forest_variable().variableYeZhuName(request));
         //使用map存储数据
         //提示信息
-        map.put("code",200);
+        map.put("code", 200);
 
         return map;
 

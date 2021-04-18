@@ -112,7 +112,7 @@ public class ZhiFuMX {
             b = Forest_dataTreatingUtils.MC() + "%02X%s";
             Formatter formatter = new Formatter();
 
-            for(int i = 0; i < mc2.length; ++i) {
+            for (int i = 0; i < mc2.length; ++i) {
                 MC = formatter.format(Locale.getDefault(), "%02X%s", mc2[i], i < mc2.length - 1 ? "-" : "").toString();
             }
         } catch (Exception var9) {

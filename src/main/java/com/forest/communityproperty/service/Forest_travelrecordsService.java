@@ -41,11 +41,13 @@ public class Forest_travelrecordsService {
     public int updateByPrimaryKeySelective(Forest_travelrecords forest_travelrecords) {
         return forest_travelrecordsMapper.updateByPrimaryKeySelective(forest_travelrecords);
     }
+
     /**
      * 查询车辆关联信息的统计数据
+     *
      * @return
      */
-    public int findSelectCount(){
+    public int findSelectCount() {
         return forest_travelrecordsMapper.findSelectCount();
     }
 }

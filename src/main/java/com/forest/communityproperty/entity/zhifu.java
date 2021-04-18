@@ -5,21 +5,21 @@ import lombok.Data;
 @Data
 public class zhifu {
     /**
-     *支付类型
+     * 支付类型
      * 交易金额
-     *商户订单号
-     *
+     * 商户订单号
+     * <p>
      * 商品名称
-     *
+     * <p>
      * app_id
-     *
+     * <p>
      * 签名
      */
     private String pay_type;
     private String money;
     private int ids;
     //private String order_n;
-    private String  subject;
+    private String subject;
     private String result;
     private String app_id;
     private String sign;

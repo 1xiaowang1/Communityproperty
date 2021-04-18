@@ -28,7 +28,7 @@ public class Forest_yezhumessageController {
     //设置日常信息
     public Forest_currentEntry f = new Forest_currentEntry();
     //全局访问类
-    private Forest_variable Forest_variable =new Forest_variable();
+    private Forest_variable Forest_variable = new Forest_variable();
     /**
      * 系统管理业务层
      */
@@ -115,7 +115,7 @@ public class Forest_yezhumessageController {
      */
     @RequestMapping("/yeZhuDelete")
     public Map<String, Object> yeZhuDelete(@RequestParam("yeZhuID") int model, HttpServletRequest request, HttpSession session) {
-          //删除业主信息
+        //删除业主信息
         int shanchu = forest_yezhumessageService.deleteByPrimaryKey(model);
         //存储物业的登录名
         map.put("name", new Forest_variable().sessionName(request));
@@ -153,13 +153,13 @@ public class Forest_yezhumessageController {
         //按业主身份证来查询
         String findUserCredit = forest_yezhumessageService.findUserCredit(model);
         //判断业主身份证是否为空
-        if (findUserCredit == null|| findUserCredit == "" ) {
+        if (findUserCredit == null || findUserCredit == "") {
             //状态码  200
             map.put("code", 200);
             return map;
         }
         //返回业主编号
-        map.put("yeZhuID",Integer.parseInt(findUserCredit));
+        map.put("yeZhuID", Integer.parseInt(findUserCredit));
         //状态码 500
         map.put("code", 500);
         return map;
@@ -327,12 +327,12 @@ public class Forest_yezhumessageController {
         map.put("code", 200);
         return map;
     }
+
     /**
      * 按业主ID来查询数据
      */
-    public List<Forest_yezhumessage> selectByPrimaryKeyID(int id)
-    {
-        List<Forest_yezhumessage>  list=forest_yezhumessageService.selectByPrimaryKey(id);
+    public List<Forest_yezhumessage> selectByPrimaryKeyID(int id) {
+        List<Forest_yezhumessage> list = forest_yezhumessageService.selectByPrimaryKey(id);
         return list;
     }
 
@@ -343,15 +343,13 @@ public class Forest_yezhumessageController {
      */
     @RequestMapping("/registerYeZhu")
     public Map<String, Object> updateRegisterSelective(@RequestBody Forest_yezhumessage model, HttpServletRequest request) {
-        if(model.getName().equals(model.getEmailNum()))
-        {
-           int size= forest_yezhumessageService.updateRegisterSelective(model);
-           if(size==1)
-           {
-               //状态码 200
-               map.put("code", 200);
-               return map;
-           }
+        if (model.getName().equals(model.getEmailNum())) {
+            int size = forest_yezhumessageService.updateRegisterSelective(model);
+            if (size == 1) {
+                //状态码 200
+                map.put("code", 200);
+                return map;
+            }
             //状态码 400
             map.put("code", 400);
             return map;
@@ -360,45 +358,47 @@ public class Forest_yezhumessageController {
         map.put("code", 500);
         return map;
     }
+
     /**
      * updateRegisterSelective
      * 修改业主信息
      */
     @RequestMapping("/updateYeZhu")
     public Map<String, Object> updateYeZhu(@RequestBody Forest_yezhumessage model, HttpServletRequest request) {
-            int size= forest_yezhumessageService.updateRegisterSelective(model);
-            if(size==1)
-            {
-                //状态码 200
-                map.put("code", 200);
-                return map;
-            }
-            //状态码 400
-            map.put("code", 400);
+        int size = forest_yezhumessageService.updateRegisterSelective(model);
+        if (size == 1) {
+            //状态码 200
+            map.put("code", 200);
             return map;
+        }
+        //状态码 400
+        map.put("code", 400);
+        return map;
     }
+
     /**
      * updateRegisterSelective
      * 查询业主信息  登录
      */
     @RequestMapping("/selectYeZhu")
-    public Map<String, Object> selectYeZhu(@RequestBody Forest_yezhumessage model, HttpServletRequest request,HttpSession session) {
-        List<Forest_yezhumessage> list= forest_yezhumessageService.findYeZhuUserName(model);
-        if(list.size()==0)
-        {
+    public Map<String, Object> selectYeZhu(@RequestBody Forest_yezhumessage model, HttpServletRequest request, HttpSession session) {
+        List<Forest_yezhumessage> list = forest_yezhumessageService.findYeZhuUserName(model);
+        if (list.size() == 0) {
             //状态码 400
-            map.put("code",500);
+            map.put("code", 500);
             return map;
         }
         model.setYeZhuID(list.get(0).getYeZhuID());
         model.setYeZhuName(list.get(0).getYeZhuName());
-        Forest_variable.variableYeZhuName(session,model);
+        Forest_variable.variableYeZhuName(session, model);
         //状态码 200
         map.put("code", 200);
         return map;
     }
+
     /**
-     *前端首页判断是否登录
+     * 前端首页判断是否登录
+     *
      * @param model
      * @param request
      * @return

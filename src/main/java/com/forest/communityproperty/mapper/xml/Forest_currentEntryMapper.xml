@@ -16,13 +16,14 @@
     </resultMap>
 
     <!--查询日常记录信息-->
-    <select id="selectEmployee"  resultMap="BaseResultMap">
-    SELECT * FROM forest_currententry c ,forest_xitongyonghu x ,forest_yezhumessage y , forest_currententrystyle s
-    where  c.styleID = s.styleID and c.xtYongHuID=x.xtYongHuID and c.yeZhuID = y.yeZhuID
-  </select>
+    <select id="selectEmployee" resultMap="BaseResultMap">
+        SELECT * FROM forest_currententry c ,forest_xitongyonghu x ,forest_yezhumessage y , forest_currententrystyle s
+        where c.styleID = s.styleID and c.xtYongHuID=x.xtYongHuID and c.yeZhuID = y.yeZhuID
+    </select>
 
     <!--增加日常记录信息-->
-    <insert id="insertSelectiveS" keyColumn="currentEntryID" keyProperty="currentEntryID" parameterType="com.forest.communityproperty.entity.Forest_currentEntry"
+    <insert id="insertSelectiveS" keyColumn="currentEntryID" keyProperty="currentEntryID"
+            parameterType="com.forest.communityproperty.entity.Forest_currentEntry"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into forest_currententry

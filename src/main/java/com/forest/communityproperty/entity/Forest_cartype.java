@@ -10,8 +10,8 @@ public class Forest_cartype {
      * 车位时间
      * 车位备注
      */
-   private int  typeID;
-   private String cartTypeName;
+    private int typeID;
+    private String cartTypeName;
     private String carTypeDate;
     private String carTypeBeiZhu;
 }

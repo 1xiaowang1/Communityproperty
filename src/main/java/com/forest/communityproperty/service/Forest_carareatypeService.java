@@ -14,10 +14,10 @@ public class Forest_carareatypeService {
 
     /**
      * 查询车位区域
+     *
      * @return
      */
-   public List<Forest_carareatype> selectEmployee()
-   {
-       return forest_carareatypeMapper.selectEmployee();
-   }
+    public List<Forest_carareatype> selectEmployee() {
+        return forest_carareatypeMapper.selectEmployee();
+    }
 }

@@ -20,11 +20,12 @@
     </resultMap>
 
     <!--查询维修信息-->
-    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest" resultMap="BaseResultMap">
-     SELECT * FROM forest_repairrequest re , forest_yezhumessage yz
-    where re.yeZhuID=yz.yeZhuID
-    order by re.repairState asc
-    limit  #{num},#{size}
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_repairrequest re , forest_yezhumessage yz
+        where re.yeZhuID=yz.yeZhuID
+        order by re.repairState asc
+        limit #{num},#{size}
     </select>
     <!--统计数据-->
     <select id="findSelectCount" resultType="java.lang.Integer">
@@ -78,7 +79,7 @@
         </trim>
     </insert>
     <!--修改维修状态-->
-    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_repairrequest">
+    <update id="updateByPrimaryKeySelective" parameterType="com.forest.communityproperty.entity.Forest_repairrequest">
         update forest_repairrequest
         <set>
             <if test="shenQingShiJian != null and shenQingShiJian != ''">
@@ -92,11 +93,12 @@
     </update>
 
     <!--查询维修信息-->
-    <select id="selectRepairEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest" resultMap="BaseResultMap">
-     SELECT * FROM forest_repairrequest re , forest_yezhumessage yz
-    where re.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
-    order by re.repairState asc
-    limit  #{num},#{size}
+    <select id="selectRepairEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_repairrequest re , forest_yezhumessage yz
+        where re.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
+        order by re.repairState asc
+        limit #{num},#{size}
     </select>
     <!--统计数据-->
     <select id="findRepairSelectCount" resultType="java.lang.Integer">
@@ -105,7 +107,7 @@
     </select>
 
     <!--修改维修状态-->
-    <update id="updateSelective"  parameterType="com.forest.communityproperty.entity.Forest_repairrequest">
+    <update id="updateSelective" parameterType="com.forest.communityproperty.entity.Forest_repairrequest">
         update forest_repairrequest
         <set>
             <if test="shenQingShiJian != null and shenQingShiJian != ''">
@@ -121,8 +123,10 @@
         where repairID = #{repairID}
     </update>
     <!--查询维修信息-->
-    <select id="selectsEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest" resultMap="BaseResultMap">
-     SELECT * FROM forest_repairrequest
-     where repairState = #{repairState} and yeZhuID=#{yeZhuID} and repairImage=#{repairImage} and shenQingShiJian = #{shenQingShiJian}
+    <select id="selectsEmployee" parameterType="com.forest.communityproperty.entity.Forest_repairrequest"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_repairrequest
+        where repairState = #{repairState} and yeZhuID=#{yeZhuID} and repairImage=#{repairImage} and shenQingShiJian =
+        #{shenQingShiJian}
     </select>
 </mapper>

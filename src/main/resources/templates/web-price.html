@@ -10,8 +10,8 @@
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
+    <link rel="stylesheet" href="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.css">
+    <script src="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.js"></script>
 
     <!-- Custom styles for our template -->
     <link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen">
@@ -21,9 +21,8 @@
     <!--[if lt IE 9]>
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
     <![endif]-->
+    <script src="js/username.js"></script>
 </head>
 
 <body>
@@ -199,8 +198,6 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/custom.js"></script>
 </body>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
 
 
 <script type="text/javascript">
@@ -217,7 +214,7 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 500) {
-                    window.location.href = "http://localhost:8080/forest/web-login.html";
+                    window.location.href = userUrl + "/web-login.html";
                 } else {
                     $("#usercostName").text(data.user[0]);
                     $("#usercostName1").html(data.user[1]);
@@ -262,7 +259,7 @@
                     data: JSON.stringify(data),
                     success: function (data) {
                         if (data.code == 200) {
-                            window.location.href = "http://localhost:8080/forest/zhifu.html";
+                            window.location.href = userUrl + "/zhifu.html";
                         } else {
                             swal.fire("提示", "费用已交过", "question");
                         }

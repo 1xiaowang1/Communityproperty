@@ -8,12 +8,12 @@
     <meta content="Coderthemes" name="author"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
+    <link rel="stylesheet" href="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.css">
+    <script src="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.js"></script>
     <!-- App css -->
     <link href="assets/css/icons.min1.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/app.min1.css" rel="stylesheet" type="text/css"/>
-
+    <script src="js/username.js"></script>
 
     <style type="text/css">
         .mmm {
@@ -119,8 +119,6 @@
 
 <!-- App js -->
 <script src="assets/js/app.min.js"></script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
 
 
 </body>
@@ -409,12 +407,11 @@
                             async: false,
                             success: function (data) {
                                 if (data.code == 200) {
-                                    window.location.href="http://localhost:8080/forest/pages-login.html";
-                                } else if(data.code=400)
-                                    {
-                                        Swal.fire("提示", "请输入完整数据", "question");
-                                    }else {
-                                    window.location.href="http://localhost:8080/forest/pages-register.html";
+                                    window.location.href = userUrl + "/pages-login.html";
+                                } else if (data.code = 400) {
+                                    Swal.fire("提示", "请输入完整数据", "question");
+                                } else {
+                                    window.location.href = userUrl + "/pages-register.html";
                                 }
                             }
                         });
@@ -431,6 +428,7 @@
 
 
     }
+
     //获取系统用户登录名
     function findUserName() {
         var XtYongUserName = $("#XtYongUserName").val();  //登录昵称
@@ -457,6 +455,7 @@
             }
         });
     }
+
     //获取系统用户的身份证
     function findUsrCredit() {
         var XtYongHuSFZ = $("#XtYongHuSFZ").val();        //身份证号

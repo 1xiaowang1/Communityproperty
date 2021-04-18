@@ -20,8 +20,8 @@ public class Forest_currentEntry {
     private int xtYongHuID;
     private int yeZhuID;
     private int styleID;
-    private Forest_xitongyonghu  user;
-    private Forest_yezhumessage  message;
+    private Forest_xitongyonghu user;
+    private Forest_yezhumessage message;
     private Forest_currentEntryStyle currentEntryStyle;
     private String currentEntryBeiZhu;
 }

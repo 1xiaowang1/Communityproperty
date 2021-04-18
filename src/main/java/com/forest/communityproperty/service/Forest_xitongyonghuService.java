@@ -65,124 +65,145 @@ public class Forest_xitongyonghuService {
     public String doesTheUserExist(Forest_xitongyonghu model) {
         return forest_xitongyonghuMapper.doesTheUserExist(model);
     }
+
     /**
      * 根据用户名查询
      * 判断是否存在重复的用户名
      */
-    public  String findUserName(Forest_xitongyonghu model){
-        return  forest_xitongyonghuMapper.findUserName(model);
+    public String findUserName(Forest_xitongyonghu model) {
+        return forest_xitongyonghuMapper.findUserName(model);
     }
+
     /**
      * 根据身份证号查询
      * 判断该用户是否注册过
      */
-    public String findUserCredit(Forest_xitongyonghu model){
-        return  forest_xitongyonghuMapper.findUserCredit(model);
+    public String findUserCredit(Forest_xitongyonghu model) {
+        return forest_xitongyonghuMapper.findUserCredit(model);
     }
 
     /**
      * 根据输入的用户名和身份证号
      * 判断是否存在该用户
      */
-    public String findUserNameAndSFZ(Forest_xitongyonghu model){
+    public String findUserNameAndSFZ(Forest_xitongyonghu model) {
         return forest_xitongyonghuMapper.findUserNameAndSFZ(model);
     }
 
     /**
      * 根据身份证和用户名来进行重置密码
+     *
      * @param record
      * @return
      */
-    public int   updateByPrimaryKey(Forest_xitongyonghu record)
-    {
-        return  forest_xitongyonghuMapper.updateByPrimaryKey(record);
+    public int updateByPrimaryKey(Forest_xitongyonghu record) {
+        return forest_xitongyonghuMapper.updateByPrimaryKey(record);
     }
+
     /**
      * 管理员登录
+     *
      * @param forest_xitongyonghu
      * @return
      */
-    public List<Forest_xitongyonghu> pageUserExist(Forest_xitongyonghu forest_xitongyonghu){
+    public List<Forest_xitongyonghu> pageUserExist(Forest_xitongyonghu forest_xitongyonghu) {
         return forest_xitongyonghuMapper.pageUserExist(forest_xitongyonghu);
     }
 
     /**
-     *物业人员数据显示
+     * 物业人员数据显示
+     *
      * @param m
      * @return
      */
-   public List<Forest_xitongyonghu> pageUserSelect(Forest_xitongyonghu m){
-       return forest_xitongyonghuMapper.pageUserSelect(m);
-   }
+    public List<Forest_xitongyonghu> pageUserSelect(Forest_xitongyonghu m) {
+        return forest_xitongyonghuMapper.pageUserSelect(m);
+    }
 
     /**
-     *物业人员数据统计
+     * 物业人员数据统计
+     *
      * @return
      */
-   public int findSelectCount(){
-       return forest_xitongyonghuMapper.findSelectCount();
-   }
+    public int findSelectCount() {
+        return forest_xitongyonghuMapper.findSelectCount();
+    }
 
     /**
-     *物业人员申请数据显示
+     * 物业人员申请数据显示
+     *
      * @return
      */
-    public List<Forest_xitongyonghu> pageUserSelectUser(){
+    public List<Forest_xitongyonghu> pageUserSelectUser() {
         return forest_xitongyonghuMapper.pageUserSelectUser();
     }
 
     /* * 删除用户信息
      * @param id
      * @return
-             */
-   public int deleteByPrimaryKeys(int forest_xitongyonghu){
-       return  forest_xitongyonghuMapper.deleteByPrimaryKeys(forest_xitongyonghu);
-   }
+     */
+    public int deleteByPrimaryKeys(int forest_xitongyonghu) {
+        return forest_xitongyonghuMapper.deleteByPrimaryKeys(forest_xitongyonghu);
+    }
+
     /**
      * 修改状态
+     *
      * @return
      */
-    public int updateSelectiveUsers(Forest_xitongyonghu forest_xitongyonghu){
+    public int updateSelectiveUsers(Forest_xitongyonghu forest_xitongyonghu) {
         return forest_xitongyonghuMapper.updateSelectiveUsers(forest_xitongyonghu);
     }
 
     /**
      * 修改用户级别
+     *
      * @param forest_xitongyonghu
      * @return
      */
-    public int updateSelectiveJiBie(Forest_xitongyonghu forest_xitongyonghu){
+    public int updateSelectiveJiBie(Forest_xitongyonghu forest_xitongyonghu) {
         return forest_xitongyonghuMapper.updateSelectiveJiBie(forest_xitongyonghu);
     }
-    /**pageUserSelects  3
-     *物业人员数据显示
+
+    /**
+     * pageUserSelects  3
+     * 物业人员数据显示
+     *
      * @param m
      * @return
      */
-    public List<Forest_xitongyonghu> pageUserSelects(Forest_xitongyonghu m){
+    public List<Forest_xitongyonghu> pageUserSelects(Forest_xitongyonghu m) {
         return forest_xitongyonghuMapper.pageUserSelects(m);
     }
-    /**3
-     *物业人员数据统计
+
+    /**
+     * 3
+     * 物业人员数据统计
+     *
      * @return
      */
-    public int findSelectCounts(){
+    public int findSelectCounts() {
         return forest_xitongyonghuMapper.findSelectCounts();
     }
+
     /**
      * 模糊查询
+     *
      * @param forest_xitongyonghu
      * @return
      */
-    public List<Forest_xitongyonghu>  pageUserSelectXtYongName(Forest_xitongyonghu forest_xitongyonghu){
+    public List<Forest_xitongyonghu> pageUserSelectXtYongName(Forest_xitongyonghu forest_xitongyonghu) {
         return forest_xitongyonghuMapper.pageUserSelectXtYongName(forest_xitongyonghu);
     }
-    /**3
+
+    /**
+     * 3
      * 模糊查询
+     *
      * @param forest_xitongyonghu
      * @return
      */
-    public List<Forest_xitongyonghu>  pageUserSelectXtYongNames(Forest_xitongyonghu forest_xitongyonghu){
+    public List<Forest_xitongyonghu> pageUserSelectXtYongNames(Forest_xitongyonghu forest_xitongyonghu) {
         return forest_xitongyonghuMapper.pageUserSelectXtYongNames(forest_xitongyonghu);
     }
 

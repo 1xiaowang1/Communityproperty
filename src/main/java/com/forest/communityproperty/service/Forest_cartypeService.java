@@ -11,11 +11,13 @@ import java.util.List;
 public class Forest_cartypeService {
     @Resource
     Forest_cartypeMapper forest_cartypeMapper;
+
     /**
      * 查询车位区域
+     *
      * @return
      */
-    public List<Forest_cartype> selectEmployee(){
+    public List<Forest_cartype> selectEmployee() {
 
         return forest_cartypeMapper.selectEmployee();
     }

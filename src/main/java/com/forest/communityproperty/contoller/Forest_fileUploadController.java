@@ -20,56 +20,58 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//D:\images\
 @RestController
 public class Forest_fileUploadController {
 
-    public Forest_carmessage forest_carmessage=new Forest_carmessage();
-    private Forest_repairrequest forest_repairrequest=new Forest_repairrequest();
+    public Forest_carmessage forest_carmessage = new Forest_carmessage();
+    private Forest_repairrequest forest_repairrequest = new Forest_repairrequest();
     @Autowired
     Forest_carmessageController forest_carmessageController;
-     @Autowired
+    @Autowired
     Forest_repairrequestService forest_repairrequestService;
+
     /**
      * 将图片存在对应文件中
      */
     @RequestMapping("upload")
-    public Map fileUpload(@RequestParam MultipartFile file,String carID, HttpServletRequest request){
+    public Map fileUpload(@RequestParam MultipartFile file, String carID, HttpServletRequest request) {
         Map map = new HashMap();
         boolean rs = false;
-        if(!file.isEmpty()){
-            String fileName = System.currentTimeMillis()+file.getOriginalFilename();
+        if (!file.isEmpty()) {
+            String fileName = System.currentTimeMillis() + file.getOriginalFilename();
             forest_carmessage.setCarID(Integer.parseInt(carID));
             forest_carmessage.setCarImage(fileName);
             forest_carmessageController.updateByPrimaryImage(forest_carmessage);
-            String savePath = "D:\\images\\";
-            File dest = new File(savePath+File.separator+fileName);
+            String savePath = "/www/server/SpringBoot/wh/XiaoQuWuYe/images/";
+            File dest = new File(savePath + File.separator + fileName);
             try {
                 file.transferTo(dest);
                 rs = true;
-                map.put("result",rs);
+                map.put("result", rs);
             } catch (IOException e) {
                 e.printStackTrace();
-                map.put("result",rs);
+                map.put("result", rs);
             }
-        }
-        else if (file.isEmpty()){
-            map.put("result",rs);
+        } else if (file.isEmpty()) {
+            map.put("result", rs);
         }
         return map;
     }
+
     /**
      * 将图片存在对应文件中
      */
     @RequestMapping(value = "uploadRepair", method = RequestMethod.POST)
-    public Map uploadRepair(@RequestParam MultipartFile file, HttpServletRequest request){
+    public Map uploadRepair(@RequestParam MultipartFile file, HttpServletRequest request) {
         Map map = new HashMap();
         boolean rs = false;
-        if(!file.isEmpty()){
+        if (!file.isEmpty()) {
             //图片名称
-            String fileName = System.currentTimeMillis()+file.getOriginalFilename();
+            String fileName = System.currentTimeMillis() + file.getOriginalFilename();
             forest_repairrequest.setRepairImage(fileName);
             //业主的编号
-            int yeZhuID= new Forest_variable().sessionID(request);
+            int yeZhuID = new Forest_variable().sessionID(request);
             forest_repairrequest.setYeZhuID(yeZhuID);
             //设置时间的格式
             SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -82,24 +84,23 @@ public class Forest_fileUploadController {
             //新增维修申请
             forest_repairrequestService.insertSelective(forest_repairrequest);
             //查询新增的维修申请
-            List<Forest_repairrequest> list=forest_repairrequestService.selectsEmployee(forest_repairrequest);
+            List<Forest_repairrequest> list = forest_repairrequestService.selectsEmployee(forest_repairrequest);
             //存储新增的维修申请
-            map.put("num",list.get(0).getRepairID());
+            map.put("num", list.get(0).getRepairID());
             //图片位置
-            String savePath = "D:\\images\\";
+            String savePath = "/www/server/SpringBoot/wh/XiaoQuWuYe/images/";
             //拼接
-            File dest = new File(savePath+File.separator+fileName);
+            File dest = new File(savePath + File.separator + fileName);
             try {
                 file.transferTo(dest);
                 rs = true;
-                map.put("result",rs);
+                map.put("result", rs);
             } catch (IOException e) {
                 e.printStackTrace();
-                map.put("result",rs);
+                map.put("result", rs);
             }
-        }
-        else if (file.isEmpty()){
-            map.put("result",rs);
+        } else if (file.isEmpty()) {
+            map.put("result", rs);
         }
         return map;
     }

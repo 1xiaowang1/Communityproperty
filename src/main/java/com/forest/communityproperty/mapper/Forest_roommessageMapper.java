@@ -9,12 +9,14 @@ import java.util.List;
 public interface Forest_roommessageMapper {
     /**
      * 查询房间信息
+     *
      * @return
      */
     List<Forest_roommessage> selectEmployee();
 
     /**
      * 新增房间信息
+     *
      * @param forest_roommessage
      * @return
      */
@@ -22,6 +24,7 @@ public interface Forest_roommessageMapper {
 
     /**
      * 删除房间信息
+     *
      * @param forest_roommessage
      * @return
      */

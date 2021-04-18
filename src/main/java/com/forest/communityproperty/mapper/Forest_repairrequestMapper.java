@@ -9,6 +9,7 @@ import java.util.List;
 public interface Forest_repairrequestMapper {
     /**
      * 查询维修记录信息
+     *
      * @param model
      * @return
      */
@@ -16,12 +17,14 @@ public interface Forest_repairrequestMapper {
 
     /**
      * 查询记录信息总和
+     *
      * @return
      */
     int findSelectCount();
 
     /**
      * 新增维修记录信息
+     *
      * @param model
      * @return
      */
@@ -29,6 +32,7 @@ public interface Forest_repairrequestMapper {
 
     /**
      * 修改维修记录信息
+     *
      * @param model
      * @return
      */
@@ -36,6 +40,7 @@ public interface Forest_repairrequestMapper {
 
     /**
      * 查询维修记录信息 搜索
+     *
      * @param model
      * @return
      */
@@ -43,12 +48,14 @@ public interface Forest_repairrequestMapper {
 
     /**
      * 查询记录信息总和 搜索
+     *
      * @return
      */
     int findRepairSelectCount();
 
     /**
      * 前端—修改信息
+     *
      * @param model
      * @return
      */
@@ -56,6 +63,7 @@ public interface Forest_repairrequestMapper {
 
     /**
      * 前台—查询信息
+     *
      * @param model
      * @return
      */

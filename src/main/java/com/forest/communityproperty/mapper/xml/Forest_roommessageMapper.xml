@@ -11,11 +11,13 @@
     </resultMap>
 
     <!--查询楼房记录信息-->
-    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_roommessage" resultMap="BaseResultMap">
-     SELECT * FROM forest_roommessage order by floorName desc
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_roommessage"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_roommessage order by floorName desc
     </select>
     <!--增加楼房记录信息 -->
-    <insert id="insertSelective" keyColumn="floorID" keyProperty="floorID" parameterType="com.forest.communityproperty.entity.Forest_roommessage"
+    <insert id="insertSelective" keyColumn="floorID" keyProperty="floorID"
+            parameterType="com.forest.communityproperty.entity.Forest_roommessage"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into forest_roommessage

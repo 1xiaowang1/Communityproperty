@@ -21,11 +21,10 @@ public class Forest_roomnameController {
     Forest_roomnameService forest_roomnameService;
 
     /**
-     *查询房间信息
+     * 查询房间信息
      */
     @PostMapping("/roomInsertServiceEmployee")
-    public Map<String, Object> selectEmployee(@RequestBody Forest_roomname model, HttpServletRequest request, HttpSession session)
-    {
+    public Map<String, Object> selectEmployee(@RequestBody Forest_roomname model, HttpServletRequest request, HttpSession session) {
         if (new Forest_variable().variableNameSession(request) == 500) {
             map.put("code", 500);
             return map;
@@ -41,18 +40,18 @@ public class Forest_roomnameController {
 
 
         //查询房间信息
-        List<Forest_roomname> list=forest_roomnameService.selectEmployee();
+        List<Forest_roomname> list = forest_roomnameService.selectEmployee();
         map.put("name", new Forest_variable().sessionName(request));
-        map.put("roomList",list);
-        map.put("code",200);
+        map.put("roomList", list);
+        map.put("code", 200);
         return map;
     }
+
     @PostMapping("/roomDeleteByPrimaryKeys")
-    public Map<String, Object> deleteByPrimaryKeys(@RequestBody Forest_roomname model)
-    {
+    public Map<String, Object> deleteByPrimaryKeys(@RequestBody Forest_roomname model) {
         //查询房间信息
-        int list=forest_roomnameService.deleteByPrimaryKeys(model);
-        map.put("code",200);
+        int list = forest_roomnameService.deleteByPrimaryKeys(model);
+        map.put("code", 200);
         return map;
     }
 }

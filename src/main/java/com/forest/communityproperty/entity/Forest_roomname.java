@@ -14,6 +14,6 @@ public class Forest_roomname {
     private String roomName;
     private String roomDate;
     private String roomBeiZhu;
-    private  int num;
+    private int num;
     private String name;
 }

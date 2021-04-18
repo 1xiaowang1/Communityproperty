@@ -11,8 +11,9 @@
     </resultMap>
 
     <!--查询车位区域信息-->
-    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_projectmanage" resultMap="BaseResultMap">
-     SELECT * FROM forest_projectmanage order by projectDate desc
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_projectmanage"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_projectmanage order by projectDate desc
     </select>
 
 </mapper>

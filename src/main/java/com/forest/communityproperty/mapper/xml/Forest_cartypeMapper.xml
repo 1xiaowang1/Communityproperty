@@ -11,8 +11,9 @@
     </resultMap>
 
     <!--查询车位区域信息-->
-    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_cartype" resultMap="BaseResultMap">
-     SELECT * FROM forest_cartype order by cartTypeName desc
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_cartype"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_cartype order by cartTypeName desc
     </select>
 
 </mapper>

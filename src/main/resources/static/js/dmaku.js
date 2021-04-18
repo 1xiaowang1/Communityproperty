@@ -11,13 +11,13 @@ var signUpsButton = document.getElementById('signUps')
 var container = document.getElementById('dowebok')
 
 signUpButton.addEventListener('click', function () {
-    $("#demo2").attr("style","display:none;");//隐藏div
-    $("#demo1").attr("style","display:block;");//显示div
+    $("#demo2").attr("style", "display:none;");//隐藏div
+    $("#demo1").attr("style", "display:block;");//显示div
     container.classList.add('right-panel-active')
 })
 signUpsButton.addEventListener('click', function () {
-    $("#demo1").attr("style","display:none;");//隐藏div
-    $("#demo2").attr("style","display:block;");//显示div
+    $("#demo1").attr("style", "display:none;");//隐藏div
+    $("#demo2").attr("style", "display:block;");//显示div
     container.classList.add('right-panel-active')
 })
 signInButton.addEventListener('click', function () {

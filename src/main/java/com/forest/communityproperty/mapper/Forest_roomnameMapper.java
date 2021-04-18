@@ -9,12 +9,14 @@ import java.util.List;
 public interface Forest_roomnameMapper {
     /**
      * 查询楼房信息
+     *
      * @return
      */
     List<Forest_roomname> selectEmployee();
 
     /**
      * 新增楼房信息
+     *
      * @param forest_roomname
      * @return
      */
@@ -22,8 +24,9 @@ public interface Forest_roomnameMapper {
 
     /**
      * 删除楼房信息
+     *
      * @param forest_roomname
      * @return
      */
-    int deleteByPrimaryKeys(Forest_roomname forest_roomname );
+    int deleteByPrimaryKeys(Forest_roomname forest_roomname);
 }

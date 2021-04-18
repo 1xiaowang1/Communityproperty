@@ -27,17 +27,17 @@
     <!--查询已缴费信息-->
     <select id="selectEmployeeState" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
             resultMap="BaseResultMap">
-     SELECT * FROM forest_ordermanage om , forest_projectmanage pm,forest_yezhumessage ym
-      where om.projectID=pm.projectID and om.yeZhuID=ym.yeZhuID and om.orderState=1
-      order by projectDate desc
-       limit  #{num},#{size}
+        SELECT * FROM forest_ordermanage om , forest_projectmanage pm,forest_yezhumessage ym
+        where om.projectID=pm.projectID and om.yeZhuID=ym.yeZhuID and om.orderState=1
+        order by projectDate desc
+        limit #{num},#{size}
     </select>
     <!--查询未缴费信息-->
     <select id="selectOrderState" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
             resultMap="BaseResultMap">
-     SELECT * FROM forest_yezhumessage where yeZhuID not in
-     (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
-       limit  #{num},#{size}
+        SELECT * FROM forest_yezhumessage where yeZhuID not in
+        (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
+        limit #{num},#{size}
     </select>
     <!--统计已缴费信息-->
     <select id="findSelectCount" resultType="java.lang.Integer">
@@ -46,25 +46,26 @@
     </select>
     <!--统计未缴费信息-->
     <select id="findOrderSelectCount" resultType="java.lang.Integer">
-       SELECT count(*) FROM forest_yezhumessage where yeZhuID not in
-     (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
+        SELECT count(*) FROM forest_yezhumessage where yeZhuID not in
+        (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
     </select>
     <!--查询未缴费信息搜索统计-->
     <select id="findMessageSelectCount" resultType="java.lang.Integer">
         SELECT count(*) FROM forest_yezhumessage where yeZhuID not in
         (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
-        and  yeZhuName like "%"#{name}"%"
+        and yeZhuName like "%"#{name}"%"
     </select>
     <!--查询未缴费信息搜索-->
     <select id="selectByPrimaryKeysName" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
             resultMap="BaseResultMap">
         SELECT * FROM forest_yezhumessage where yeZhuID not in
         (SELECT DISTINCT yeZhuID from forest_ordermanage where orderYear=#{orderYear} and orderMonth=#{orderMonth})
-        and  yeZhuName like "%"#{name}"%"  limit  #{num},#{size}
+        and yeZhuName like "%"#{name}"%" limit #{num},#{size}
     </select>
 
     <!--增加费用信息 -->
-    <insert id="insertSelective" keyColumn="orderID" keyProperty="orderID" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
+    <insert id="insertSelective" keyColumn="orderID" keyProperty="orderID"
+            parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into forest_ordermanage
@@ -116,16 +117,17 @@
         </trim>
     </insert>
     <!--查询是否存再-->
-    <select id="selectOrderKey" parameterType="com.forest.communityproperty.entity.Forest_ordermanage" resultMap="BaseResultMap">
+    <select id="selectOrderKey" parameterType="com.forest.communityproperty.entity.Forest_ordermanage"
+            resultMap="BaseResultMap">
         <!--@mbg.generated-->
         select
         *
         from forest_ordermanage
-        where orderYear=#{orderYear} and  orderMonth=#{orderMonth} and yeZhuID=#{yeZhuID} and orderDate=#{orderDate}
+        where orderYear=#{orderYear} and orderMonth=#{orderMonth} and yeZhuID=#{yeZhuID} and orderDate=#{orderDate}
     </select>
 
     <!--支付成功-->
-    <update id="updateRegisterSelective"  parameterType="com.forest.communityproperty.entity.Forest_ordermanage">
+    <update id="updateRegisterSelective" parameterType="com.forest.communityproperty.entity.Forest_ordermanage">
         <!--@mbg.generated-->
         update forest_ordermanage
         <set>
@@ -142,7 +144,7 @@
         from forest_ordermanage
         where orderID =#{orderID}
     </delete>
-<!--总收益-->
+    <!--总收益-->
     <select id="selectSumOrderKey" resultType="java.util.Map">
         <!--@mbg.generated-->
         select sum(orderPrice) from forest_ordermanage

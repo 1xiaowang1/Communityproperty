@@ -2,16 +2,15 @@
 <html lang="zh-CN">
 
 <head>
+
     <meta charset="utf-8">
     <title>FOREST公司官方</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="css/dmaku.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
     <script src="js/dmaku.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
+    <link rel="stylesheet" href="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.css">
+    <script src="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.js"></script>
     <style type="text/css">
         #sds {
             width: 100%;
@@ -19,13 +18,14 @@
             padding-top: 20px;
         }
     </style>
+    <script src="js/username.js"></script>
 </head>
 <body>
 <div class="dowebok" id="dowebok">
 
 
     <div class="form-container sign-up-container" id="demo1">
-        <form>
+        <form action="javascript:void(0);">
             <h1>注册</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -38,13 +38,13 @@
             <input type="email" id="yeZhuEmail" placeholder="电子邮箱">
             <input type="password" id="yeZhuPassword" placeholder="密码">
             <input type="text" id="yan" placeholder="验证码">
-            <button id="zhuCe">注册</button>
+            <input type="submit" id="zhuCe" value="注册"/>
         </form>
     </div>
 
 
     <div class="form-container sign-up-container" id="demo2">
-        <form>
+        <form action="javascript:void(0);">
             <h1>忘记密码</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -56,7 +56,7 @@
             <input type="text" id="yeZhuSFZ1" placeholder="身份证号">
             <input type="password" id="yeZhuPassword1" placeholder="请输入密码">
             <input type="password" id="password" placeholder="再次输入密码">
-            <button id="bianJi">编辑</button>
+            <input type="submit" id="bianJi" value="编辑"/>
         </form>
     </div>
 
@@ -96,9 +96,6 @@
     <input type="hidden" id="emailNum"/>
 </div>
 <script src="js/dmaku.js"></script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
-
 </body>
 <script type="text/javascript">
 
@@ -117,9 +114,9 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 200) {
-                    window.location.href = "http://localhost:8080/forest/web-login.html";
+                    window.location.href = userUrl + "/web-login.html";
                 } else {
-                    window.location.href = "http://localhost:8080/forest/web-index.html";
+                    window.location.href = userUrl + "/web-index.html";
                 }
             }
         });
@@ -143,7 +140,7 @@
                 data: JSON.stringify(data),
                 success: function (data) {
                     if (data.code == 200) {
-                        window.location.href = "http://localhost:8080/forest/web-index.html";
+                        window.location.href = userUrl + "/web-index.html";
                     } else if (data.code == 400) {
                         Swal.fire("错误", "变更失败", "error")
                     }
@@ -181,7 +178,7 @@
             success: function (data) {
                 if (data.code == 200) {
                     Swal.fire("提示", "注册成功", "success");
-                    window.location.href = "http://localhost:8080/forest/web-index.html";
+                    window.location.href = userUrl + "/web-index.html";
                 } else if (data.code == 400) {
                     Swal.fire("错误", "注册失败", "error");
                 } else if (data.code == 500) {

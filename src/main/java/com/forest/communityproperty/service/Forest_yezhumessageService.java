@@ -18,15 +18,16 @@ public class Forest_yezhumessageService {
      *
      * @return
      */
-    public int insertSelective(Forest_yezhumessage record){
+    public int insertSelective(Forest_yezhumessage record) {
         return forest_yezhumessageMapper.insertSelective(record);
     }
+
     /**
      * 按业主信息查询
      *
      * @return
      */
-    public List<Forest_yezhumessage> selectByPrimaryKeys(Forest_yezhumessage record){
+    public List<Forest_yezhumessage> selectByPrimaryKeys(Forest_yezhumessage record) {
         return forest_yezhumessageMapper.selectByPrimaryKeys(record);
     }
 
@@ -35,81 +36,96 @@ public class Forest_yezhumessageService {
      *
      * @return
      */
-    public int findSelectCount(){
+    public int findSelectCount() {
         return forest_yezhumessageMapper.findSelectCount();
     }
+
     /**
      * 删除业主信息
+     *
      * @param id
      * @return
      */
-    public int deleteByPrimaryKey(int id){
+    public int deleteByPrimaryKey(int id) {
         return forest_yezhumessageMapper.deleteByPrimaryKey(id);
     }
+
     /**
      * 按业主身份信息
+     *
      * @return
      */
-    public String findUserCredit(String yeZhuSFZ){
+    public String findUserCredit(String yeZhuSFZ) {
         return forest_yezhumessageMapper.findUserCredit(yeZhuSFZ);
     }
+
     /**
      * 按业主id查询
+     *
      * @param id
      * @return
      */
-    public List<Forest_yezhumessage> selectByPrimaryKey(int id){
-        return  forest_yezhumessageMapper.selectByPrimaryKey(id);
+    public List<Forest_yezhumessage> selectByPrimaryKey(int id) {
+        return forest_yezhumessageMapper.selectByPrimaryKey(id);
     }
+
     /**
      * 修改业主信息
+     *
      * @param record
      * @return
      */
-    public int updateByPrimaryKeySelective(Forest_yezhumessage record)
-    {
+    public int updateByPrimaryKeySelective(Forest_yezhumessage record) {
         return forest_yezhumessageMapper.updateByPrimaryKeySelective(record);
     }
+
     /**
      * 查询按姓名业主的统计数据
+     *
      * @param yeZhuName
      * @return
      */
-    public int findSelectCountName (String yeZhuName){
-        return  forest_yezhumessageMapper.findSelectCountName(yeZhuName);
+    public int findSelectCountName(String yeZhuName) {
+        return forest_yezhumessageMapper.findSelectCountName(yeZhuName);
     }
 
     /**
      * 按业主信息查询 按姓名
-     *分页查询
+     * 分页查询
+     *
      * @return
      */
-    public  List<Forest_yezhumessage> selectByPrimaryKeysName(Forest_yezhumessage record){
+    public List<Forest_yezhumessage> selectByPrimaryKeysName(Forest_yezhumessage record) {
         return forest_yezhumessageMapper.selectByPrimaryKeysName(record);
     }
 
     /**
      * 查询业主身份证号  返回业主编号
+     *
      * @param yeZhuSFZ
      * @return
      */
-    public int findYeZhuCredit(String yeZhuSFZ){
+    public int findYeZhuCredit(String yeZhuSFZ) {
         return forest_yezhumessageMapper.findYeZhuCredit(yeZhuSFZ);
     }
+
     /**
      * 修改业主信息
+     *
      * @param forest_yezhumessage
      * @return
      */
-    public int updateRegisterSelective(Forest_yezhumessage forest_yezhumessage){
+    public int updateRegisterSelective(Forest_yezhumessage forest_yezhumessage) {
         return forest_yezhumessageMapper.updateRegisterSelective(forest_yezhumessage);
     }
+
     /**
      * 检测业主的登录名和密码
+     *
      * @param forest_yezhumessage
      * @return
      */
-    public List<Forest_yezhumessage> findYeZhuUserName(Forest_yezhumessage forest_yezhumessage){
+    public List<Forest_yezhumessage> findYeZhuUserName(Forest_yezhumessage forest_yezhumessage) {
         return forest_yezhumessageMapper.findYeZhuUserName(forest_yezhumessage);
     }
 }

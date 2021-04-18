@@ -13,12 +13,15 @@ public interface Forest_yezhumessageMapper {
      * @return
      */
     int insertSelective(Forest_yezhumessage record);
+
     /**
      * 按业主信息查询
-     *分页查询
+     * 分页查询
+     *
      * @return
      */
     List<Forest_yezhumessage> selectByPrimaryKeys(Forest_yezhumessage record);
+
     /**
      * 统计数据
      *
@@ -28,6 +31,7 @@ public interface Forest_yezhumessageMapper {
 
     /**
      * 删除业主信息
+     *
      * @param id
      * @return
      */
@@ -35,12 +39,14 @@ public interface Forest_yezhumessageMapper {
 
     /**
      * 按业主身份信息
+     *
      * @return
      */
     String findUserCredit(String yeZhuSFZ);
 
     /**
      * 按业主id查询
+     *
      * @param id
      * @return
      */
@@ -48,6 +54,7 @@ public interface Forest_yezhumessageMapper {
 
     /**
      * 修改业主信息
+     *
      * @param record
      * @return
      */
@@ -55,19 +62,23 @@ public interface Forest_yezhumessageMapper {
 
     /**
      * 查询按姓名业主的统计数据
+     *
      * @param yeZhuName
      * @return
      */
-      int findSelectCountName(String yeZhuName);
+    int findSelectCountName(String yeZhuName);
+
     /**
      * 按业主信息查询 按姓名
-     *分页查询
+     * 分页查询
+     *
      * @return
      */
     List<Forest_yezhumessage> selectByPrimaryKeysName(Forest_yezhumessage record);
 
     /**
      * 查询业主的身份证
+     *
      * @param yeZhuSFZ
      * @return
      */
@@ -75,6 +86,7 @@ public interface Forest_yezhumessageMapper {
 
     /**
      * 修改业主信息
+     *
      * @param forest_yezhumessage
      * @return
      */
@@ -82,6 +94,7 @@ public interface Forest_yezhumessageMapper {
 
     /**
      * 检测业主的登录名和密码
+     *
      * @param forest_yezhumessage
      * @return
      */

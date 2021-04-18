@@ -23,6 +23,7 @@ public class Forest_ordermanageController {
     Forest_ordermanageService forest_ordermanageService;
     @Autowired
     Forest_yezhumessageService forest_yezhumessageService;
+
     /**
      * 查询已缴费
      *
@@ -69,6 +70,7 @@ public class Forest_ordermanageController {
         if (new Forest_variable().variableNameSession(request) == 500) {
             //状态码  500错误
             map.put("code", 500);
+            System.out.println(111);
             return map;
         }
         //系统物业人员的账号名称
@@ -190,7 +192,6 @@ public class Forest_ordermanageController {
         }
         return num;
     }
-
 
 
 }

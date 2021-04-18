@@ -43,7 +43,8 @@
         where xtYongHuID = #{xtYongHuID}
     </delete>
 
-    <insert id="insertSelective" keyColumn="xtYongHuID" keyProperty="xtYongHuID" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
+    <insert id="insertSelective" keyColumn="xtYongHuID" keyProperty="xtYongHuID"
+            parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into forest_xitongyonghu
@@ -164,7 +165,7 @@
         SELECT xtYongHuID
         FROM forest_xitongyonghu
         WHERE xtYongUserName = #{xtYongUserName}
-          AND xtYongMiMa = #{xtYongMiMa} and xtYongHuJiBie=#{xtYongHuJiBie} and xtYongHuState=#{xtYongHuState}
+        AND xtYongMiMa = #{xtYongMiMa} and xtYongHuJiBie=#{xtYongHuJiBie} and xtYongHuState=#{xtYongHuState}
     </select>
     <!--根据用户名系统用户检测是否存在-->
     <select id="findUserName" resultType="java.lang.String">
@@ -203,42 +204,44 @@
 
 
     <!--管理员登录-->
-    <select id="pageUserExist" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+    <select id="pageUserExist" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
+            resultMap="BaseResultMap">
         SELECT *
         FROM forest_xitongyonghu
         WHERE xtYongUserName = #{xtYongUserName}
-          AND xtYongMiMa = #{xtYongMiMa} and xtYongHuJiBie=#{xtYongHuJiBie} and xtYongHuState=#{xtYongHuState}
+        AND xtYongMiMa = #{xtYongMiMa} and xtYongHuJiBie=#{xtYongHuJiBie} and xtYongHuState=#{xtYongHuState}
     </select>
 
 
-
     <!--物业人员进行数据显示-->
-    <select id="pageUserSelect" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+    <select id="pageUserSelect" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
+            resultMap="BaseResultMap">
         SELECT *
         FROM forest_xitongyonghu
-        WHERE  xtYongHuJiBie=1  order by xtDate desc limit #{num},#{size}
+        WHERE xtYongHuJiBie=1 order by xtDate desc limit #{num},#{size}
     </select>
 
     <!--物业人员进行数据显示-->
-    <select id="pageUserSelects" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+    <select id="pageUserSelects" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
+            resultMap="BaseResultMap">
         SELECT *
         FROM forest_xitongyonghu
-        WHERE  xtYongHuJiBie!=3   order by xtDate desc limit #{num},#{size}
+        WHERE xtYongHuJiBie!=3 order by xtDate desc limit #{num},#{size}
     </select>
     <!--物业人员进行数据统计-->
     <select id="findSelectCount" resultType="java.lang.Integer">
         SELECT count(*)
         FROM forest_xitongyonghu
-        WHERE  xtYongHuJiBie=1
+        WHERE xtYongHuJiBie=1
     </select>
     <!--物业人员进行数据统计-->
     <select id="findSelectCounts" resultType="java.lang.Integer">
         SELECT count(*)
         FROM forest_xitongyonghu
-        WHERE  xtYongHuJiBie!=3
+        WHERE xtYongHuJiBie!=3
     </select>
     <!--修改状态-->
-    <update id="updateSelectiveUsers"  parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
+    <update id="updateSelectiveUsers" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
         <!--@mbg.generated-->
         update forest_xitongyonghu
         <set>
@@ -252,7 +255,7 @@
         where xtYongHuID = #{xtYongHuID}
     </update>
 
-    <update id="updateSelectiveJiBie"  parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
+    <update id="updateSelectiveJiBie" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu">
         <!--@mbg.generated-->
         update forest_xitongyonghu
         <set>
@@ -274,27 +277,25 @@
     </delete>
 
     <!--物业人员进行数据显示 姓名-->
-    <select id="pageUserSelectXtYongName" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+    <select id="pageUserSelectXtYongName" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
+            resultMap="BaseResultMap">
         SELECT *
         FROM forest_xitongyonghu
-        WHERE  xtYongHuJiBie!=3  and xtYongName like "%"#{xtYongName}"%"  order by xtDate desc
+        WHERE xtYongHuJiBie!=3 and xtYongName like "%"#{xtYongName}"%" order by xtDate desc
     </select>
     <!--物业人员进行数据显示 姓名-->
-    <select id="pageUserSelectXtYongNames" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu" resultMap="BaseResultMap">
+    <select id="pageUserSelectXtYongNames" parameterType="com.forest.communityproperty.entity.Forest_xitongyonghu"
+            resultMap="BaseResultMap">
         SELECT *
         FROM forest_xitongyonghu
-        WHERE  xtYongHuJiBie=1  and xtYongName like "%"#{xtYongName}"%"  order by xtDate desc
+        WHERE xtYongHuJiBie=1 and xtYongName like "%"#{xtYongName}"%" order by xtDate desc
     </select>
     <!--物业人员申请进行数据显示-->
-    <select id="pageUserSelectUser"  resultMap="BaseResultMap">
+    <select id="pageUserSelectUser" resultMap="BaseResultMap">
         SELECT *
         FROM forest_xitongyonghu
-        WHERE  xtYongHuJiBie!=2  and xtYongHuState=2
+        WHERE xtYongHuJiBie!=2 and xtYongHuState=2
     </select>
-
-
-
-
 
 
 </mapper>

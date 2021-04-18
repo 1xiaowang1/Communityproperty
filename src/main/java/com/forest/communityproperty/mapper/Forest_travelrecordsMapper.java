@@ -9,6 +9,7 @@ import java.util.List;
 public interface Forest_travelrecordsMapper {
     /**
      * 查询临时信息
+     *
      * @param forest_travelrecords
      * @return
      */
@@ -16,6 +17,7 @@ public interface Forest_travelrecordsMapper {
 
     /**
      * 新增临时信息
+     *
      * @param forest_travelrecords
      * @return
      */
@@ -23,12 +25,15 @@ public interface Forest_travelrecordsMapper {
 
     /**
      * 出入状态的临时表
+     *
      * @param forest_travelrecords
      * @return
      */
     int updateByPrimaryKeySelective(Forest_travelrecords forest_travelrecords);
+
     /**
      * 查询车辆关联信息的统计数据
+     *
      * @return
      */
     int findSelectCount();

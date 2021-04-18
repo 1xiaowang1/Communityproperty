@@ -92,7 +92,7 @@ public class Forest_repairrequestController {
      * @return
      */
     @PostMapping("/repairUpdatePrimarySelective")
-    public Map<String, Object> updateByPrimaryKeySelective(@RequestBody Forest_repairrequest model,HttpSession session) {
+    public Map<String, Object> updateByPrimaryKeySelective(@RequestBody Forest_repairrequest model, HttpSession session) {
         //设置时间的格式
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取时间的方法
@@ -172,6 +172,7 @@ public class Forest_repairrequestController {
         }
         return lNum;
     }
+
     /**
      * 前台—查询维修记录信息
      *
@@ -186,13 +187,14 @@ public class Forest_repairrequestController {
         Date d = new Date();
         //将获取的时间转换成设置的时间格式进行存储
         model.setShenQingShiJian(sf.format(d));
-         int list = forest_repairrequestService.updateSelective(model);
+        int list = forest_repairrequestService.updateSelective(model);
         //存储已缴费数据
         map.put("repair", list);
         //正确返回值为200
         map.put("code", 200);
         return map;
     }
+
     /**
      * 前台—登录
      *

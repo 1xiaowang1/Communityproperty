@@ -8,14 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
-    <!-- third party css -->
+    <link rel="stylesheet" href="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.css">
+    <script src="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.js"></script><!-- third party css -->
     <link href="libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <link href="libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <link href="libs/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <link href="libs/datatables/select.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
-
+    <script src="js/username.js"></script>
     <!-- App css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/icons.min.css" rel="stylesheet" type="text/css"/>
@@ -87,9 +86,6 @@
 
 <body>
 </body>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
-
 <script type="text/javascript">
     //加载业主信息
     function loadstu() {
@@ -104,9 +100,9 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 200) {
-                    window.location.href = "http://localhost:8888/index?username=" + data.name + "&password=2";
+                    window.location.href = "http://106.75.214.54:8686/index?username=" + data.name + "&password=2";
                 } else {
-                    window.location.href = "http://localhost:8080/forest/pages-login.html";
+                    window.location.href = userUrl + "/pages-login.html";
                 }
             }
         });

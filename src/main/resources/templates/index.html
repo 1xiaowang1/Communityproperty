@@ -13,12 +13,13 @@
     <link href="libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <link href="libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
     <script src="js/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.css "/>
+    <link rel="stylesheet" href="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.css">
+    <script src="webjars/sweetalert2/10.10.0/dist/sweetalert2.min.js"></script>
     <!-- App css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/icons.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/app.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/username.js"></script>
 
 </head>
 
@@ -569,34 +570,34 @@
                                     <div class="calendar2">
                                         <div id="inline-datepicker-example" class="datepicker"></div>
                                     </div>
-                            </div>
+                                </div>
 
-                        </div> <!-- end card-box-->
-                    </div> <!-- end col-->
+                            </div> <!-- end card-box-->
+                        </div> <!-- end col-->
 
-                    <div class="col-xl-4 stretch-card">
-                        <div class="card-box">
-                            <h4 class="header-title mb-3">Statistics</h4>
-                            <div class="row text-center">
-                                <div class="col-sm-4 mb-3">
-                                    <h3 class="font-weight-light">19,785</h3>
-                                    <p class="text-muted text-overflow">Add Views</p>
+                        <div class="col-xl-4 stretch-card">
+                            <div class="card-box">
+                                <h4 class="header-title mb-3">Statistics</h4>
+                                <div class="row text-center">
+                                    <div class="col-sm-4 mb-3">
+                                        <h3 class="font-weight-light">19,785</h3>
+                                        <p class="text-muted text-overflow">Add Views</p>
+                                    </div>
+                                    <div class="col-sm-4 mb-3">
+                                        <h3 class="font-weight-light">$3,787</h3>
+                                        <p class="text-muted text-overflow">Est. Earning</p>
+                                    </div>
+                                    <div class="col-sm-4 mb-3">
+                                        <h3 class="font-weight-light">$4,548</h3>
+                                        <p class="text-muted text-overflow">Total Cost</p>
+                                    </div>
                                 </div>
-                                <div class="col-sm-4 mb-3">
-                                    <h3 class="font-weight-light">$3,787</h3>
-                                    <p class="text-muted text-overflow">Est. Earning</p>
+                                <div class="chartjs-chart line-chart-static">
+                                    <canvas id="line-chart-static"></canvas>
                                 </div>
-                                <div class="col-sm-4 mb-3">
-                                    <h3 class="font-weight-light">$4,548</h3>
-                                    <p class="text-muted text-overflow">Total Cost</p>
-                                </div>
-                            </div>
-                            <div class="chartjs-chart line-chart-static">
-                                <canvas id="line-chart-static"></canvas>
-                            </div>
-                        </div> <!-- end card-box -->
+                            </div> <!-- end card-box -->
+                        </div>
                     </div>
-                </div>
                 </div>
                 <!-- end row -->
 
@@ -682,8 +683,7 @@
 
 <!-- App js -->
 <script src="js/app.min.js"></script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.4.0/sweetalert2.min.js "></script>
+
 </body>
 <script type="text/javascript">
     //加载业主信息
@@ -700,7 +700,7 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 500) {
-                    window.location.href = "http://localhost:8080/forest/pages-login.html";
+                    window.location.href = userUrl + "/pages-login.html";
                 } else {
                     var str = null;
                     for (var i = 0; i < data.orderList.length; i++) {
@@ -725,7 +725,27 @@
         });
 
     }
-//收益
+
+    function orederUpdate(yeZhuID) {
+        var data = {
+            "id": yeZhuID
+        };
+        $.ajax({
+            url: "goEmailUpload",
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(data),
+            success: function (data) {
+                if (data.code == 200) {
+                    Swal.fire("通报", "电子邮件已发送", "question");
+                }
+            }
+        });
+    }
+
+
+    //收益
     //退出
     function sumNum() {
         $.ajax({
@@ -735,20 +755,16 @@
             contentType: 'application/json;charset=utf-8',
             success: function (data) {
                 //$5685K
-                $("#price").html("$"+data.price+"K");
-                $("#sum").html("$"+data.sum+"K");
+                $("#price").html("$" + data.price + "K");
+                $("#sum").html("$" + data.sum + "K");
                 $("#count").html(data.count)
                 $("#orderList").html(data.orderList);
             }
         });
     }
-//用户数量
-//未缴费数量
 
-
-
-
-
+    //用户数量
+    //未缴费数量
 
 
     //退出
@@ -759,20 +775,10 @@
             dataType: "json",
             contentType: 'application/json;charset=utf-8',
             success: function (data) {
-                window.location.href = "http://localhost:8080/forest/pages-login.html";
+                window.location.href = userUrl + "/pages-login.html";
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
 
 
     $(function () {

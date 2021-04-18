@@ -19,7 +19,7 @@ public class Forest_ReturnController {
         System.out.println("成功接收到API返回的同步信息");
         Forest_ordermanage oreder = new Forest_ordermanage();
         HttpSession session = request.getSession();
-        String Order_no= (String) session.getAttribute("order");
+        String Order_no = (String) session.getAttribute("order");
         System.out.println(Order_no);
         oreder.setOrderID(Integer.parseInt(Order_no));
         oreder.setOrderState(1);
@@ -32,7 +32,7 @@ public class Forest_ReturnController {
 
 
     @RequestMapping("/TuiChu")
-    public String TuiChu(HttpServletRequest request,HttpSession session) {
+    public String TuiChu(HttpServletRequest request, HttpSession session) {
         session.removeAttribute("username");
         session.removeAttribute("userId");
         return "web-index.html";

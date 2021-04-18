@@ -16,7 +16,6 @@ public class Forest_xitongyonghu {
      * 物业楼层
      * 物业状态
      * 物业级别
-     *
      */
     private int xtYongHuID;
     private String xtYongUserName;

@@ -8,7 +8,8 @@
         <result column="carAreaTypeBeiZhu" property="carAreaTypeBeiZhu"/>
     </resultMap>
     <!--查询车位信息-->
-    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_carareatype" resultMap="BaseResultMap">
-     SELECT * FROM forest_carareatype order by carAreaTypeDate desc
+    <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_carareatype"
+            resultMap="BaseResultMap">
+        SELECT * FROM forest_carareatype order by carAreaTypeDate desc
     </select>
 </mapper>

@@ -14,28 +14,32 @@ public class Forest_roommessageService {
 
     /**
      * 查询房间信息
+     *
      * @return
      */
-    public List<Forest_roommessage> selectEmployee(){
+    public List<Forest_roommessage> selectEmployee() {
         return forest_roommessageMapper.selectEmployee();
     }
+
     /**
      * 新增房间信息
+     *
      * @param forest_roommessage
      * @return
      */
-   public int insertSelective(Forest_roommessage forest_roommessage){
-       return  forest_roommessageMapper.insertSelective(forest_roommessage);
-   }
+    public int insertSelective(Forest_roommessage forest_roommessage) {
+        return forest_roommessageMapper.insertSelective(forest_roommessage);
+    }
 
     /**
      * 删除房间信息
+     *
      * @param forest_roommessage
      * @return
      */
-   public int deleteByPrimaryKeys(Forest_roommessage forest_roommessage){
-       return  forest_roommessageMapper.deleteByPrimaryKeys(forest_roommessage);
-   }
+    public int deleteByPrimaryKeys(Forest_roommessage forest_roommessage) {
+        return forest_roommessageMapper.deleteByPrimaryKeys(forest_roommessage);
+    }
 
 
 }

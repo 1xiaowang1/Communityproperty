@@ -27,13 +27,15 @@ public class Forest_carmessageController {
         List<Forest_carmessage> list = forest_carmessageService.selectEmployee();
         return list;
     }
+
     /**
      * 新增车辆信息
+     *
      * @param forest_carmessage
      * @return
      */
-    public int insertSelective(Forest_carmessage forest_carmessage){
-        int mNum=0;
+    public int insertSelective(Forest_carmessage forest_carmessage) {
+        int mNum = 0;
         //设置时间的格式
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取时间的方法
@@ -41,39 +43,40 @@ public class Forest_carmessageController {
         //将获取的时间转换成设置的时间格式进行存储
         forest_carmessage.setCatDate(sf.format(d));
         //新增车辆信息
-        int i=forest_carmessageService.insertSelective(forest_carmessage);
-        if(i==1)
-        {
+        int i = forest_carmessageService.insertSelective(forest_carmessage);
+        if (i == 1) {
             //查询车辆信息
             List<Forest_carmessage> list = forest_carmessageService.selectEmployee();
             //取出新增的车辆编号
-            mNum= list.get(0).getCarID();
+            mNum = list.get(0).getCarID();
 
         }
         return mNum;
     }
+
     /**
      * 上传图片
      */
-    public int updateByPrimaryImage(Forest_carmessage forest_carmessage){
-        int sNum=forest_carmessageService.updateByPrimaryImage(forest_carmessage);
+    public int updateByPrimaryImage(Forest_carmessage forest_carmessage) {
+        int sNum = forest_carmessageService.updateByPrimaryImage(forest_carmessage);
         return sNum;
     }
 
     /**
      * 删除车辆信息
      */
-    public int deleteByPrimaryKey(int forest_carmessage){
-        int sNum=forest_carmessageService.deleteByPrimaryKey(forest_carmessage);
+    public int deleteByPrimaryKey(int forest_carmessage) {
+        int sNum = forest_carmessageService.deleteByPrimaryKey(forest_carmessage);
         return sNum;
     }
 
     /**
      * 修改车辆信息
+     *
      * @param forest_carmessage
      * @return
      */
-    public int updateByPrimaryKeySelective(Forest_carmessage forest_carmessage){
+    public int updateByPrimaryKeySelective(Forest_carmessage forest_carmessage) {
         //设置时间的格式
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取时间的方法
@@ -81,7 +84,7 @@ public class Forest_carmessageController {
         //将获取的时间转换成设置的时间格式进行存储
         forest_carmessage.setCatDate(sf.format(d));
         //修改车辆信息
-        int mNum=forest_carmessageService.updateByPrimaryKeySelective(forest_carmessage);
+        int mNum = forest_carmessageService.updateByPrimaryKeySelective(forest_carmessage);
         return mNum;
     }
 }

@@ -15,13 +15,13 @@ public class Forest_cartypeController {
     private Map<String, Object> map = new HashMap<>();
     @Autowired
     Forest_cartypeService forest_cartypeService;
+
     /**
-     *查询车位区域
+     * 查询车位区域
      */
-    public List<Forest_cartype>  selectEmployee()
-    {
+    public List<Forest_cartype> selectEmployee() {
         //查询车位区域
-        List<Forest_cartype> list=forest_cartypeService.selectEmployee();
+        List<Forest_cartype> list = forest_cartypeService.selectEmployee();
         return list;
     }
 }

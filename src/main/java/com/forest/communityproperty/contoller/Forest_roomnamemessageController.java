@@ -137,9 +137,9 @@ public class Forest_roomnamemessageController {
             //设置操作类型
             f.setStyleID(3);
             //获取session中系统管理员姓名name值
-            String name= (String) session.getAttribute("name");
+            String name = (String) session.getAttribute("name");
             //获取session中系统管理员的编号id值
-            int id= (int) session.getAttribute("id");
+            int id = (int) session.getAttribute("id");
             //赋值给entity的方法
             f.setCurrentEntryName(name);
             f.setXtYongHuID(id);

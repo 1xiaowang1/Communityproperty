@@ -28,7 +28,7 @@ public class Forest_dataTreatingUtils {
             char[] str = new char[j * 2];
             int k = 0;
 
-            for(int i = 0; i < j; ++i) {
+            for (int i = 0; i < j; ++i) {
                 byte byte0 = md[i];
                 str[k++] = md5String[byte0 >>> 4 & 15];
                 str[k++] = md5String[byte0 & 15];
@@ -53,7 +53,7 @@ public class Forest_dataTreatingUtils {
             b = MC() + "%02X%s";
             Formatter formatter = new Formatter();
 
-            for(int i = 0; i < mc2.length; ++i) {
+            for (int i = 0; i < mc2.length; ++i) {
                 MC = formatter.format(Locale.getDefault(), "%02X%s", mc2[i], i < mc2.length - 1 ? "-" : "").toString();
             }
         } catch (Exception var9) {
@@ -79,7 +79,7 @@ public class Forest_dataTreatingUtils {
             String sIP = address.getHostAddress();
             Formatter formatter = new Formatter();
 
-            for(int i = 0; i < mc2.length; ++i) {
+            for (int i = 0; i < mc2.length; ++i) {
                 MC = formatter.format(Locale.getDefault(), "%02X%s", mc2[i], i < mc2.length - 1 ? "-" : "").toString();
                 MCC = MD5(MC);
             }

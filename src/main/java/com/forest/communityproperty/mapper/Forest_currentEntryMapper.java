@@ -10,12 +10,14 @@ import java.util.List;
 public interface Forest_currentEntryMapper {
     /**
      * 查询登记的信息
+     *
      * @return
      */
     List<Forest_currentEntry> selectEmployee();
 
     /**
      * 新增日常信息
+     *
      * @param forest_currentEntry
      * @return
      */

@@ -56,12 +56,6 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtooles</artifactId>
-            <version>unknown</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
             <exclusions>
@@ -71,7 +65,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
 
 
         <!-- 引入json依赖  -->
@@ -115,9 +108,27 @@
             <artifactId>spring-websocket</artifactId>
             <version>5.0.8.RELEASE</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/sweetalert2 -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>sweetalert2</artifactId>
+            <version>10.10.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <!-- xml放在java目录下-->

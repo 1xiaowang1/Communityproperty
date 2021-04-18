@@ -16,7 +16,8 @@
         userCostId,userCostName,userCostYear,userCostMonth,uc.yeZhuID,uc.projectID
     </sql>
     <!--增加费用信息 -->
-    <insert id="insertSelective" keyColumn="userCostId" keyProperty="userCostId" parameterType="com.forest.communityproperty.entity.Forest_usercost"
+    <insert id="insertSelective" keyColumn="userCostId" keyProperty="userCostId"
+            parameterType="com.forest.communityproperty.entity.Forest_usercost"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into forest_usercost
@@ -56,12 +57,14 @@
         </trim>
     </insert>
     <!--查询是否存再-->
-    <select id="selectByPrimaryKey" parameterType="com.forest.communityproperty.entity.Forest_usercost" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="com.forest.communityproperty.entity.Forest_usercost"
+            resultMap="BaseResultMap">
         <!--@mbg.generated-->
         select
-            *
+        *
         from forest_usercost uc,forest_yezhumessage yz
-        where uc.yeZhuID=yz.yeZhuID and uc.userCostYear=#{userCostYear} and  uc.userCostMonth=#{userCostMonth} and uc.yeZhuID=#{yeZhuID} and uc.projectID=#{projectID}
+        where uc.yeZhuID=yz.yeZhuID and uc.userCostYear=#{userCostYear} and uc.userCostMonth=#{userCostMonth} and
+        uc.yeZhuID=#{yeZhuID} and uc.projectID=#{projectID}
     </select>
 
 </mapper>

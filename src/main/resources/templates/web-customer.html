@@ -8,7 +8,7 @@
 <body>
 
 </body>
-
+<script src="js/username.js"></script>
 <script type="text/javascript">
     //加载业主信息
     function loadstu() {
@@ -23,9 +23,9 @@
             data: JSON.stringify(data),
             success: function (data) {
                 if (data.code == 200) {
-                    window.location.href = "http://localhost:8888/index?username=" + data.name + "&password=1";
+                    window.location.href = "http://106.75.214.54:8686/index?username=" + data.name + "&password=1";
                 } else {
-                    window.location.href = "http://localhost:8080/forest/web-login.html";
+                    window.location.href = userUrl + "/web-login.html";
                 }
             }
         });

@@ -19,7 +19,8 @@
         yeZhuID,yeZhuName,yeZhuSex,yeZhuPhone,yeZhuSFZ,yeZhuEmail,yeZhuPassword,yeZhuTime,yeZhuUserName
     </sql>
     <!--增加业主信息  业务人员-->
-    <insert id="insertSelective" keyColumn="yeZhuID" keyProperty="yeZhuID" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage"
+    <insert id="insertSelective" keyColumn="yeZhuID" keyProperty="yeZhuID"
+            parameterType="com.forest.communityproperty.entity.Forest_yezhumessage"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into forest_yezhumessage
@@ -82,7 +83,8 @@
         FROM forest_yezhumessage
     </select>
     <!--分页查询-->
-    <select id="selectByPrimaryKeys" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKeys" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage"
+            resultMap="BaseResultMap">
         <!--@mbg.generated-->
         SELECT
         <include refid="Base_Column_List"/>
@@ -97,7 +99,7 @@
         where yeZhuID =#{yeZhuID}
     </delete>
     <!--根据业主身份证检测是否存在-->
-    <select id="findUserCredit"  resultType="java.lang.String">
+    <select id="findUserCredit" resultType="java.lang.String">
         SELECT yeZhuID
         FROM forest_yezhumessage
         WHERE yeZhuSFZ=#{yeZhuSFZ}
@@ -112,7 +114,7 @@
     </select>
 
     <!--修改业主信息  业务人员-->
-    <update id="updateByPrimaryKeySelective"  parameterType="com.forest.communityproperty.entity.Forest_yezhumessage">
+    <update id="updateByPrimaryKeySelective" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage">
         <!--@mbg.generated-->
         update forest_yezhumessage
         <set>
@@ -136,14 +138,14 @@
     </update>
 
 
-
     <!--统计数据查询-->
     <select id="findSelectCountName" resultType="java.lang.Integer">
-        SELECT count(*)  FROM forest_yezhumessage where yeZhuName like "%"#{yeZhuName}"%"
+        SELECT count(*) FROM forest_yezhumessage where yeZhuName like "%"#{yeZhuName}"%"
     </select>
 
     <!--分页查询 姓名-->
-    <select id="selectByPrimaryKeysName" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKeysName" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage"
+            resultMap="BaseResultMap">
         <!--@mbg.generated-->
         SELECT
         <include refid="Base_Column_List"/>
@@ -152,7 +154,7 @@
     </select>
 
     <!--根据业主身份证检测是否存在-->
-    <select id="findYeZhuCredit"  resultType="java.lang.Integer">
+    <select id="findYeZhuCredit" resultType="java.lang.Integer">
         SELECT yeZhuID
         FROM forest_yezhumessage
         WHERE yeZhuSFZ=#{yeZhuSFZ}
@@ -160,7 +162,7 @@
 
 
     <!--修改业主信息  业务人员-->
-    <update id="updateRegisterSelective"  parameterType="com.forest.communityproperty.entity.Forest_yezhumessage">
+    <update id="updateRegisterSelective" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage">
         <!--@mbg.generated-->
         update forest_yezhumessage
         <set>
@@ -175,7 +177,8 @@
     </update>
 
     <!--根据业主账号和密码-->
-    <select id="findYeZhuUserName"  parameterType="com.forest.communityproperty.entity.Forest_yezhumessage" resultMap="BaseResultMap">
+    <select id="findYeZhuUserName" parameterType="com.forest.communityproperty.entity.Forest_yezhumessage"
+            resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM forest_yezhumessage

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * web配置
+ *
  * @author soutmateee
  */
 @Configuration
@@ -42,16 +43,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     /**
      * 静态资源的配置 - 使得可以从磁盘中读取 Html、图片、视频、音频等
+     * .addResourceLocations("file: D:\\images\\")
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
-                .addResourceLocations("file: D:\\images\\")
+                .addResourceLocations("file:/www/server/SpringBoot/wh/XiaoQuWuYe/images/")
                 .addResourceLocations(staticLocations.split(","));
         //映射图片保存地址
         registry.addResourceHandler("/upload/**")
-                .addResourceLocations("file:D:\\images\\")
-                .addResourceLocations(staticLocations.split(","));;
+                .addResourceLocations("file:/www/server/SpringBoot/wh/XiaoQuWuYe/images/")
+                .addResourceLocations(staticLocations.split(","));
+        ;
     }
 
     /**

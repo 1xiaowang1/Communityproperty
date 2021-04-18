@@ -15,7 +15,7 @@ public class Forest_carmessage {
     private int carID;
     private String carImage;
     private String carPlates;
-    private  int carStates;
+    private int carStates;
     private String catDate;
     private String carBeiZhu;
 

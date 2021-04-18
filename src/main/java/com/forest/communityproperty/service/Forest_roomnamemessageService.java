@@ -111,23 +111,24 @@ public class Forest_roomnamemessageService {
     public List<Forest_roomnamemessage> selectByPrimaryKeysName(Forest_roomnamemessage forest_roomnamemessage) {
         return forest_roomnamemessageMapper.selectByPrimaryKeysName(forest_roomnamemessage);
     }
+
     /**
      * 查询总和数据
+     *
      * @return
      */
-     public int findSelectCountEnter(Forest_roomnamemessage forest_roomnamemessage)
-     {
-         return forest_roomnamemessageMapper.findSelectCountEnter(forest_roomnamemessage);
-     }
+    public int findSelectCountEnter(Forest_roomnamemessage forest_roomnamemessage) {
+        return forest_roomnamemessageMapper.findSelectCountEnter(forest_roomnamemessage);
+    }
 
     /**
      * 按id查询
+     *
      * @param forest_roomnamemessage
      * @return
      */
-    public Forest_roomnamemessage findSelectCountID(Forest_roomnamemessage forest_roomnamemessage)
-    {
-       return forest_roomnamemessageMapper.findSelectCountID(forest_roomnamemessage);
+    public Forest_roomnamemessage findSelectCountID(Forest_roomnamemessage forest_roomnamemessage) {
+        return forest_roomnamemessageMapper.findSelectCountID(forest_roomnamemessage);
     }
 
 }

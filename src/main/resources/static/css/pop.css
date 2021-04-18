@@ -1,67 +1,81 @@
-.pop{
-    margin:0;padding: 0;font-size: 25px;
+.pop {
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
 }
-.pop{
+
+.pop {
     position: fixed;
     display: none;
     border-radius: 10px;
     background-color: #fff;
     z-index: 200;
-    width:600px;
-    height:650px;
-    border:1px solid #CACACA;
-    font:1rem "微软雅黑";
+    width: 600px;
+    height: 650px;
+    border: 1px solid #CACACA;
+    font: 1rem "微软雅黑";
 }
-.pop .title{
 
-    width:600px;
-    height:500px;
+.pop .title {
+
+    width: 600px;
+    height: 500px;
     line-height: 40px;
-    border-bottom:1px solid #CACACA;
+    border-bottom: 1px solid #CACACA;
     margin: 20px auto;
 
 }
-.pop .btn{
+
+.pop .btn {
     width: 42%;
     height: 40px;
     line-height: 40px;
     margin-left: 40px;
-    float:left;
+    float: left;
     color: #2B8AFB;
 }
-#btn-left{
-    border-right:1px solid #CACACA;
+
+#btn-left {
+    border-right: 1px solid #CACACA;
 }
-#btn-left1{
-    border-right:1px solid #CACACA;
+
+#btn-left1 {
+    border-right: 1px solid #CACACA;
 }
-.addUL{
-    text-align:center;
-    list-style-type:none;
-    width:600px;
-    height:50px;
+
+.addUL {
+    text-align: center;
+    list-style-type: none;
+    width: 600px;
+    height: 50px;
     line-height: 50px;
     margin-top: 40px;
 }
-.addUL li{
+
+.addUL li {
     float: left;
-    text-align:center;
+    text-align: center;
 }
-.addUL li input{
+
+.addUL li input {
     width: 350px;
     height: 50px;
 }
-.addUL li select{
+
+.addUL li select {
     width: 350px;
     height: 50px;
 }
-.addUL li.addLI{
-    margin-left:60px;
+
+.addUL li.addLI {
+    margin-left: 60px;
 }
+
 label.xrequired:before {
     content: '* ';
     color: red;
 }
-#btn1{
+
+#btn1 {
     margin-left: 80%;
 }

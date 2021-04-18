@@ -33,7 +33,7 @@ public class Forest_travelrecordsController {
      * @return
      */
     @PostMapping("/travelSelectEmployee")
-    public Map<String, Object> selectEmployee(@RequestBody Forest_travelrecords model,HttpServletRequest request) {
+    public Map<String, Object> selectEmployee(@RequestBody Forest_travelrecords model, HttpServletRequest request) {
         //判断用户是否存在登录了
         if (new Forest_variable().variableNameSession(request) == 500) {
             //状态码  500错误
@@ -52,9 +52,9 @@ public class Forest_travelrecordsController {
             model.setNum(ss);
         }
         //查询车位关联信息
-        List<Forest_travelrecords> list2=forest_travelrecordsService.selectEmployee(model);
+        List<Forest_travelrecords> list2 = forest_travelrecordsService.selectEmployee(model);
         //存储车位关联信息
-        map.put("travel",list2);
+        map.put("travel", list2);
         //统计出来的页数
         map.put("num", num);
         //状态码  200正确
@@ -79,15 +79,14 @@ public class Forest_travelrecordsController {
         //回来状态
         model.setTravelRecoStates(1);
         //物业编号
-        model.setXtYongHuID((int)session.getAttribute("id"));
+        model.setXtYongHuID((int) session.getAttribute("id"));
         //新增出行记录信息
-        int nNum=forest_travelrecordsService.insertSelective(model);
-        if(nNum==1)
-        {
-            map.put("code",200);
+        int nNum = forest_travelrecordsService.insertSelective(model);
+        if (nNum == 1) {
+            map.put("code", 200);
             return map;
         }
-        map.put("code",500);
+        map.put("code", 500);
         return map;
     }
 
@@ -105,14 +104,15 @@ public class Forest_travelrecordsController {
         Date d = new Date();
         //将获取的时间转换成设置的时间格式进行存储
         model.setTravelRecoDate(sf.format(d));
-       int mNum=forest_travelrecordsService.updateByPrimaryKeySelective(model);
-       if(mNum==1){
-           map.put("code",200);
-           return map;
-       }
-        map.put("code",500);
+        int mNum = forest_travelrecordsService.updateByPrimaryKeySelective(model);
+        if (mNum == 1) {
+            map.put("code", 200);
+            return map;
+        }
+        map.put("code", 500);
         return map;
     }
+
     /**
      * 求出统计的数据
      */
@@ -131,9 +131,6 @@ public class Forest_travelrecordsController {
         }
         return num;
     }
-
-
-
 
 
 }

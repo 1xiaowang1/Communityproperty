@@ -68,10 +68,10 @@
     <!--    查询投诉的信息-->
     <select id="selectEmployee" parameterType="com.forest.communityproperty.entity.Forest_complaint"
             resultMap="BaseResultMap">
-     SELECT * FROM forest_complaint co , forest_yezhumessage yz
-     where co.yeZhuID=yz.yeZhuID
-     order by co.comDate asc
-     limit  #{num},#{size}
+        SELECT * FROM forest_complaint co , forest_yezhumessage yz
+        where co.yeZhuID=yz.yeZhuID
+        order by co.comDate asc
+        limit #{num},#{size}
     </select>
     <!--统计投诉信息-->
     <select id="findSelectCount" resultType="java.lang.Integer">
@@ -95,15 +95,16 @@
     <!--    查询投诉的信息 姓名-->
     <select id="userEmployeeComplaint" parameterType="com.forest.communityproperty.entity.Forest_complaint"
             resultMap="BaseResultMap">
-     SELECT * FROM forest_complaint co , forest_yezhumessage yz
-     where co.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
-     order by co.comDate asc
-     limit  #{num},#{size}
+        SELECT * FROM forest_complaint co , forest_yezhumessage yz
+        where co.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
+        order by co.comDate asc
+        limit #{num},#{size}
     </select>
     <!--统计投诉信息  姓名-->
-    <select id="findUserCountComplaint" parameterType="com.forest.communityproperty.entity.Forest_complaint" resultType="java.lang.Integer">
+    <select id="findUserCountComplaint" parameterType="com.forest.communityproperty.entity.Forest_complaint"
+            resultType="java.lang.Integer">
         SELECT count(*) FROM forest_complaint co , forest_yezhumessage yz
-     where co.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
+        where co.yeZhuID=yz.yeZhuID and yz.yeZhuName like "%"#{name}"%"
     </select>
 
 </mapper>

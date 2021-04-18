@@ -18,33 +18,40 @@ public class Forest_carmessageService {
     public List<Forest_carmessage> selectEmployee() {
         return forest_carmessageMapper.selectEmployee();
     }
+
     /**
      * 新增车辆信息
+     *
      * @param forest_carmessage
      * @return
      */
-    public int insertSelective(Forest_carmessage forest_carmessage){
+    public int insertSelective(Forest_carmessage forest_carmessage) {
         return forest_carmessageMapper.insertSelective(forest_carmessage);
     }
+
     /**
      * 上传图片
      */
-   public int updateByPrimaryImage(Forest_carmessage forest_carmessage){
-       return forest_carmessageMapper.updateByPrimaryImage(forest_carmessage);
-   }
+    public int updateByPrimaryImage(Forest_carmessage forest_carmessage) {
+        return forest_carmessageMapper.updateByPrimaryImage(forest_carmessage);
+    }
+
     /**
-     *     删除车辆信息
-     *     @return
+     * 删除车辆信息
+     *
+     * @return
      */
-    public int deleteByPrimaryKey(int model){
+    public int deleteByPrimaryKey(int model) {
         return forest_carmessageMapper.deleteByPrimaryKey(model);
     }
+
     /**
      * 修改车辆信息
+     *
      * @param forest_carmessage
      * @return
      */
-    public int updateByPrimaryKeySelective(Forest_carmessage forest_carmessage){
+    public int updateByPrimaryKeySelective(Forest_carmessage forest_carmessage) {
         return forest_carmessageMapper.updateByPrimaryKeySelective(forest_carmessage);
     }
 }

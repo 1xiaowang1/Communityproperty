@@ -12,21 +12,24 @@ public class Forest_currentEntryService {
 
 
     @Resource
-     Forest_currentEntryMapper forest_currentEntryMapper;
+    Forest_currentEntryMapper forest_currentEntryMapper;
 
     /**
      * 查询登记的信息
+     *
      * @return
      */
-   public List<Forest_currentEntry> selectEmployee(){
-       return forest_currentEntryMapper.selectEmployee();
-   }
+    public List<Forest_currentEntry> selectEmployee() {
+        return forest_currentEntryMapper.selectEmployee();
+    }
+
     /**
      * 新增日常信息
+     *
      * @param forest_currentEntry
      * @return
      */
-    public int insertSelectiveS(Forest_currentEntry forest_currentEntry){
+    public int insertSelectiveS(Forest_currentEntry forest_currentEntry) {
         return forest_currentEntryMapper.insertSelectiveS(forest_currentEntry);
     }
 }

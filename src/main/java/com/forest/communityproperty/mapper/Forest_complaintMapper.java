@@ -9,6 +9,7 @@ import java.util.List;
 public interface Forest_complaintMapper {
     /**
      * 新增投诉信息
+     *
      * @param model
      * @return
      */
@@ -16,6 +17,7 @@ public interface Forest_complaintMapper {
 
     /**
      * 查询信息
+     *
      * @param model
      * @return
      */
@@ -23,12 +25,14 @@ public interface Forest_complaintMapper {
 
     /**
      * 统计数据
+     *
      * @return
      */
     int findSelectCount();
 
     /**
      * 更改数据
+     *
      * @param model
      * @return
      */
@@ -36,6 +40,7 @@ public interface Forest_complaintMapper {
 
     /**
      * 查询信息 姓名
+     *
      * @param model
      * @return
      */
@@ -43,12 +48,11 @@ public interface Forest_complaintMapper {
 
     /**
      * 统计数据 姓名
+     *
      * @param model
      * @return
      */
     int findUserCountComplaint(Forest_complaint model);
-
-
 
 
 }
